@@ -14,6 +14,9 @@ export default function Header() {
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const openNav = () => setIsOpen(true);
+  const closeNav = () => setIsOpen(false);
+  
   // Sticky header on scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -103,16 +106,15 @@ export default function Header() {
                 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
         >
           {/* Drawer Header */}
-          <div className="flex items-center justify-between px-4 h-16 border-b">
+          <div className="flex items-center justify-between px-4 h-20">
             <Link href="/" onClick={() => setIsOpen(false)}>
-              <Image src={logo} alt="Company Logo" width={120} />
+              <Image src={logo} alt="Liaisonbank" width={120} />
             </Link>
-            <button onClick={() => setIsOpen(false)}>X
-            </button>
+               <button onClick={openNav}>Open Menu</button>
           </div>
 
           {/* Drawer Menu */}
-          <ul className="flex flex-col p-4 space-y-4">
+          <ul className="submenu flex flex-col p-4 space-y-4">
             {navLinks.map((link) => (
               <li key={link.name}>
 
@@ -160,15 +162,31 @@ export default function Header() {
               </li>
             ))}
           </ul>
+
+           <div
+              id="myNav"
+              className="overlay"
+              style={{ width: isOpen ? "100%" : "0%" }}
+            >
+              <button className="closebtn" onClick={closeNav}>
+                &times;
+              </button>
+
+            <div className="overlay-content">
+              <a href="#">Home</a>
+              <a href="#">About</a>
+              <a href="#">Contact</a>
+            </div>
+          </div>
         </div>
 
         {/* ================= OVERLAY ================= */}
-        {isOpen && (
+        {/* {isOpen && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-40 md:hidden"
+            className="burger-menu fixed inset-0 bg-black bg-opacity-10 md:hidden"
             onClick={() => setIsOpen(false)}
           />
-        )}
+        )} */}
       </header>
 
     </>

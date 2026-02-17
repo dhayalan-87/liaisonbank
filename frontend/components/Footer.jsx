@@ -33,11 +33,11 @@ export default function Footer() {
           <h4 className="text-yellow-400 font-semibold mb-4 text-base">Important Links</h4>
           <ul>
               {footerLinks.map(link => (
-              <li key={link.name} className="py-2">
+              <li key={link.name}>
                 <a href={link.href}>{link.name}</a>
               </li>
             ))}
-            <li className="font-bold py-2">
+            <li>
               <a href="/article" className="cursor-pointer hover:underline">Article</a>
             </li>
           </ul>
@@ -47,7 +47,7 @@ export default function Footer() {
           <h4 className="text-yellow-400 font-semibold mb-4 text-base">Information</h4>
           <ul>
               {informationLinks.map(link => (
-              <li key={link.name} className="py-2">
+              <li key={link.name}>
                 <a href={link.href}>{link.name}</a>
               </li>
             ))}

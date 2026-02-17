@@ -1,7 +1,13 @@
 @use "tailwindcss";
-
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
 $primary-color: #ef7f1a;
-
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -338,7 +344,7 @@ ul{
   min-height: 100px;
   max-height: 150px;
   margin-bottom: -7px;
-  z-index: 99;
+  z-index: 49;
 }
 
 .content {
@@ -411,7 +417,76 @@ ul{
       height: 30vh;
     }
   }
+  .overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+
+    &-content {
+      position: relative;
+      top: 25%;
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+
+      &:hover,
+      &:focus {
+        color: #f1f1f1;
+      }
+    }
+
+  .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    color: white;
+  }
 }
+}
+
+
+@media screen and (max-height: 450px) {
+  .overlay {
+    a {
+      font-size: 20px;
+    }
+
+    .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;      
+      color: white;
+    }
+  }
+}
+.menu-button {
+  display: none;
+}
+
+/* Show button on screens smaller than 1024px */
+@media (max-width: 1023px) {
+  .menu-button {
+    display: block;
+  }
+}
+
+
 header {
     width: 100%;
     height: 5rem;
@@ -479,7 +554,8 @@ margin:0;
 border-top-left-radius: 5rem;
 border-top-right-radius: 5rem;
  h4{
-  color:#ef7f1a;
+  color:$primary-color;
+  font-size: 1.4rem;
  }
  ul{
   li {

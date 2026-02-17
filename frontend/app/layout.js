@@ -2,8 +2,6 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@/assets/scss/globals.scss";
-import BootstrapClient from '../components/BootstrapClient'; // Adjust path as necessary
-
 
 export const metadata = {
   title: "Liaisonbank",
@@ -16,10 +14,7 @@ export default function RootLayout({ children }) {
       <body className="flex flex-col min-h-screen bg-gray-50">
         <Header />
         <main className="flex-grow">
-          <div className="max-w-7xl mx-auto px-4 py-10">
             {children}
-             <BootstrapClient /> 
-          </div>
         </main>
         <Footer />
       </body>

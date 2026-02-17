@@ -280,6 +280,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+body.home{
+  main{
+    top: 0;
+  }
+}
 main{
   margin: 0;
   padding: 0;
@@ -293,6 +298,118 @@ ul{
   li {
     margin:0;
     padding:0;
+  }
+}
+.page-header {
+  position: relative;
+  text-align: center;
+  // background: linear-gradient(60deg, #00c030 0%, #00c197 100%);
+  background: linear-gradient(0deg, #be2a2a -86.4%, #ef7f1a 94.15%);
+  color: #fff;
+
+  .inner-header {
+    width: 100%;
+    height: 300px;
+    margin: 0 0 50px;
+    padding: 0;
+
+    h1 {
+      &.title {
+        color: #fff;
+      }
+    }
+  }
+
+  .title {
+    margin-top: 80px;
+    font-size: 4rem;
+    font-weight: 800;
+  }
+}
+
+.extraHeight {
+  height: 350px;
+}
+
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  min-height: 100px;
+  max-height: 150px;
+  margin-bottom: -7px;
+  z-index: 99;
+}
+
+.content {
+  position: relative;
+  height: 20vh;
+  text-align: center;
+  background-color: #fff;
+}
+/* Animation */
+.parallax {
+  > use {
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+
+    &:nth-child(1) {
+      animation-delay: -2s;
+      animation-duration: 7s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: -3s;
+      animation-duration: 10s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: -4s;
+      animation-duration: 13s;
+    }
+
+    &:nth-child(4) {
+      animation-delay: -5s;
+      animation-duration: 20s;
+    }
+  }
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+/* Shrinking for mobile */
+@media (max-width: 768px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+
+  .content {
+    height: 30vh;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .home {
+    .waves {
+      height: 40px;
+      min-height: 40px;
+    }
+
+    .content {
+      height: 30vh;
+    }
   }
 }
 header {
@@ -328,7 +445,7 @@ header {
          a{
           outline:none;
           font-size: 1.05rem;
-          color:rgb(0, 0, 0);
+          color:rgb(255, 255, 255);
           text-decoration: none;
         }
       }
@@ -358,7 +475,9 @@ header {
 }
 
 footer {
- margin:0;
+margin:0;
+border-top-left-radius: 5rem;
+border-top-right-radius: 5rem;
  h4{
   color:#ef7f1a;
  }

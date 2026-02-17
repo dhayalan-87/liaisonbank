@@ -4,17 +4,15 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
-import logo from "../assets/images/logo.png"
-import { navLinks } from '../static/menus.jsx'
-import Anouncement from "../components/Anouncement"
+import logo from "@/assets/images/logo_grey.png"
+import logoScrolled  from "@/assets/images/logo.png"
+import { navLinks } from '@/static/menus'
 
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [openSubmenu, setOpenSubmenu] = useState(null);
-  const pathname = usePathname()
-
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Sticky header on scroll
   useEffect(() => {
@@ -25,14 +23,29 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); // change at 50px
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <header className={`fixed w-full z-50 transition-all ${isSticky ? "sticky" : ""}`}>
         <div className="max-w-7xl mx-auto px-4">
           <nav className="flex items-center justify-between h-16">
-
             <Link href="/" onClick={() => setIsOpen(false)}>
-              <Image src={logo} alt="Company Logo" width={150} />
+              {/* <Image src={logo} alt="Company Logo" width={150} /> */}
+                <Image
+                  src={isScrolled ? logoScrolled : logoScrolled}
+                  alt="Company Logo"
+                  width={150}
+                  priority
+                />
             </Link>
 
             {/* ================= DESKTOP MENU ================= */}
@@ -77,7 +90,7 @@ export default function Header() {
               className="md:hidden"
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+              {isOpen ? "X" : "Menu"}
             </button>
           </nav>
         </div>
@@ -94,8 +107,7 @@ export default function Header() {
             <Link href="/" onClick={() => setIsOpen(false)}>
               <Image src={logo} alt="Company Logo" width={120} />
             </Link>
-            <button onClick={() => setIsOpen(false)}>
-              <X size={28} />
+            <button onClick={() => setIsOpen(false)}>X
             </button>
           </div>
 
@@ -159,7 +171,6 @@ export default function Header() {
         )}
       </header>
 
-      {/* <Anouncement /> */}
     </>
   )
 }

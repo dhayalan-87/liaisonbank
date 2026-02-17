@@ -2,7 +2,7 @@ import { footerLinks, informationLinks } from '../static/menus.jsx'
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white px-2 py-2 font-sans text-sm">
+    <footer className="bg-black text-white px-2 py-2 font-sans text-md">
       <div className="max-w-7xl mx-auto px-4 py-10 flex flex-wrap justify-between gap-10">
 
         <div className="flex flex-col max-w-xs flex-1 min-w-[200px]">
@@ -66,7 +66,7 @@ export default function Footer() {
 
       </div>
 
-      <div className="max-w-7xl mx-auto border-t border-gray-800 py-4 text-center text-gray-500 text-xs">
+      <div className="max-w-7xl mx-auto border-t border-gray-800 py-4 text-center text-gray-500 text-md">
         © Copyright 2026 Liaison Bank
       </div>
     </footer>

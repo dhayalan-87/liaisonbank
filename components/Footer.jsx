@@ -16,10 +16,10 @@ export default function Footer() {
             {/* <h4 className="text-yellow-400 font-semibold mb-4 text-base">Information</h4> */}
             <p className="leading-relaxed">
               <Image src={logoScrolled}
-                width={500} 
-                height={500} 
-                quality={75} 
-                alt="Call Us" 
+                width={500}
+                height={500}
+                quality={75}
+                alt="Call Us"
                 loading="lazy"
               />
             </p>
@@ -42,14 +42,14 @@ export default function Footer() {
               Plot No. 466, New Apollo CHS, 14th road, near Blue Tokai Coffee, Khar West, Mumbai- 400052
             </p>
             <div className="mb-3 d-flex align-items-center phone">
-              <Image src="/phone.png" width={25} height={25} quality={75} alt="Call Us" loading="lazy"/>&nbsp; +91 91364 43852 / 932170 9258
-              </div>
+              <Image src="/phone.png" width={25} height={25} quality={75} alt="Call Us" loading="lazy" />&nbsp; +91 91364 43852 / 932170 9258
+            </div>
             <div className="mb-3 d-flex align-items-center mail">
-              <Image src="/mail.png" width={25} height={25} quality={75} alt="Eamil Us" loading="lazy"/>&nbsp; contact@liaisonbank.com
-              </div>
+              <Image src="/mail.png" width={25} height={25} quality={75} alt="Eamil Us" loading="lazy" />&nbsp; contact@liaisonbank.com
+            </div>
             <div className="mb-3 d-flex align-items-center time">
-              <Image src="/timer.png" width={35} height={35} quality={75} alt="Office Time" loading="lazy"/>&nbsp; Mon - Sat : 8:00am to 5pm
-              </div>
+              <Image src="/timer.png" width={35} height={35} quality={75} alt="Office Time" loading="lazy" />&nbsp; Mon - Sat : 8:00am to 5pm
+            </div>
           </div>
 
         </div>
@@ -62,6 +62,11 @@ export default function Footer() {
       <div className="marquee-branch d-flex align-items-center bg-white justify-content-between">
         <div className="comingsoontitle pl-4 w-50"><p>Our new branch is opening soon</p> <div className="arrow arrow-right"></div></div>
         <div className="location"><NewLauncb /></div>
+      </div>
+      <div className="sticky-icon">
+        <a href="tel:#" className="callnow"><i className="fi fi-sr-phone-flip"></i> Call Now</a>
+        <a href="#" target="_blank" className="whatsapp"><i className="fi fi-brands-whatsapp"></i> Whatsapp </a>
+        <a className="enquire open-form"><i className="fi fi-sr-attribution-pencil"></i> Enquire Now </a>
       </div>
     </>
   );

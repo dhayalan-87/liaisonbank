@@ -6,6 +6,7 @@ import "@flaticon/flaticon-uicons/css/all/all.css";
 import AOSProvider from '@/components/AOSProvider';
 import "@fontsource/josefin-sans";
 import "@/assets/scss/globals.scss";
+import Cursor from "@/components/Cursor";
 
 export const metadata = {
   title: "Liaisonbank",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       <head>
       </head>
       <body className="flex flex-col min-h-screen bg-gray-50">
+            <Cursor />
         {/* <ParticlesBackground /> */}
         <Header />
         <main className="flex-grow">

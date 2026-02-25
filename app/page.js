@@ -1,18 +1,16 @@
 "use client";
-// import Image from "next/image";
+
 import Link from 'next/link'
 import Image from 'next/image'
 import useBodyClass from '@/components/useBodyClass'; // Adjust path as needed
 import Waves from "@/components/waves";
-import ImageWave from '@/components/ImageWave';
-import ExpertImg from '@/components/expertImg';
+
 import smallLogo from "@/assets/images/shape-small-1-1.png"
 import welcomeImg from "@/assets/images/group.jpg"
 import ceoImg from "@/assets/images/deva-CEO.jpg"
-import rightTick from "@/assets/images/rightTick.svg"
+import ServicesSection from "@/components/ServicesSection";
 import ClientScroller from "@/components/ClientScroller"
 import useFancybox from '@/components/useFancybox';
-import ServiceList from '@/components/ServiceList';
 import TestimonialInfinite from '@/components/TestimonialInfinite';
 import CertificateScroller from '@/components/CertificateScroller';
 
@@ -36,7 +34,7 @@ const Home = () => {
         <div className="container mx-auto py-5 bg-white">
           <div className="smallObject">
             <Image
-              src={smallLogo} 
+              src={smallLogo}
               alt=""
               width={257}
               height={257}
@@ -113,78 +111,29 @@ const Home = () => {
           <div className="section-title">
             <h3>What we Provide ?</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
-            <div className="d-flex justify-content-end">
-              <div className="shape-img-bg">
-                <ExpertImg />
-                <div className="img-bg-shape" aria-hidden="true">
-                  <ImageWave />
-                </div>
-              </div>
+          <section className="services-section">
+            <div className="services-grid">
+              <ServicesSection />
             </div>
-            <div className="provision p-4">
-              <div className="service-wrapper">
-                <ServiceList />
-              </div>
-              <ul className='list-unstyled list-icon style-1 d-none'>
-                <li data-content="Content for Asset Management">
-                  <Image
-                    src={rightTick}
-                    alt=""
-                    priority
-                  /> Asset Management & Regularization</li>
-                <li data-content="Content for SME Compliance">
-                  <Image
-                    src={rightTick}
-                    alt=""
-                    priority
-                  /> Compliance For SME&apos;s</li>
-                <li data-content="Content for Energy Savings">
-                  <Image
-                    src={rightTick}
-                    alt=""
-                    priority
-                  /> Energy Savings</li>
-                <li data-content="Content for Licence Procurement">
-                  <Image
-                    src={rightTick}
-                    alt=""
-                    priority
-                  /> Licence Procurement</li>
-                <li data-content="Content for Tailor Made Permissions">
-                  <Image
-                    src={rightTick}
-                    alt=""
-                    priority
-                  /> Tailor Made Permissions</li>
-              </ul>
-              <div className='p-4 d-none'>
-                  <div className='provision_content'>
-                      <p>We specialize in providing solutions for regulatory issues faced by residential buildings. 
-                        We navigate the complexities of compliances and ensure your property meets all necessary regulations.</p>
-                  </div>
-              </div>
-            </div>
-          </div>
+          </section>
         </div>
       </section>
 
       <section className="awardscertification">
-        <div className="container mx-auto py-5 bg-white">
+        <div className="container mx-auto py-5">
           <div className="section-title">
             <h3>Awards & Certifications</h3>
           </div>
 
           <div ref={fancyboxRef} className="row  py-5 d-flex align-items-center">
             {/* <div className="col-lg-2 col-md-2 col-sm-6 col-6"> */}
-                <CertificateScroller />
+            <CertificateScroller />
             {/* </div> */}
           </div>
         </div>
       </section>
-          
 
-      <section className="clientfeedback">
+      <section className="clientfeedback py-5">
         <div className="container-fluid mx-auto px-0 bg-white">
           <div className="section-title">
             <h3>Client Feedback <span>& Testimonial</span></h3>
@@ -193,7 +142,7 @@ const Home = () => {
         </div>
       </section>
 
-       <section className="ourclients">
+      <section className="ourclients">
         <div className="container-fluid mx-auto px-0 py-5 bg-white">
           <div className="section-title">
             <h3>Our Latest Clients</h3>

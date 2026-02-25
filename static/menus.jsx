@@ -31,13 +31,14 @@ const importantLinks = [
   { name: "Testimonials", href: "/testimonials" },
   { name: "Privacy Policy", href: "/privacy-policy" },
   { name: "Terms of Service", href: "/terms-of-service" },
+  { name: "Sitemap", href: "/sitemap" }
 ]
 
 const informationLinks = [
  
   { name: "Contact Us", href: "/contact-us-liaison-bank" },
   { name: "Privacy Policy", href: "/privacy-policy" },
-  { name: "Terms and Conditions", href: "/terms-conditions" }
+  { name: "Terms and Conditions", href: "/terms-conditions" },
 ]
 
 

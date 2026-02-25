@@ -1,57 +1,76 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import { Fancybox } from "@fancyapps/ui";
 import { certificateList } from "../static/certificateList";
 
-// Slick styles
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 function CertificateScroller() {
+  const sliderRef = useRef(null);
+  const slideCountRef = useRef(0);
+
   useEffect(() => {
     Fancybox.bind('.slick-slide:not(.slick-cloned) [data-fancybox="gallery"]', {
       Thumbs: false,
-      Toolbar: {
-        display: ["close"],
-      },
+      Toolbar: { display: ["close"] },
     });
 
-    return () => {
-      Fancybox.destroy();
-    };
+    return () => Fancybox.destroy();
   }, []);
 
   const settings = {
-    thumbs: false,
     arrows: false,
     dots: true,
-    infinite: false,
-    slidesToShow: 3,
+    infinite: true,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 4000,
-    cssEase: "linear",
+    speed: 800,
+    autoplaySpeed: 2000,
+    pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablet
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // Mobile
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+
+    beforeChange: () => {
+      slideCountRef.current += 1;
+
+      // ⏸ Pause after every 2 auto scrolls
+      if (slideCountRef.current % 2 === 0) {
+        sliderRef.current.slickPause();
+
+        setTimeout(() => {
+          sliderRef.current.slickPlay();
+        }, 5000); // ⏱ 5 seconds pause
+      }
+    },
   };
 
   return (
     <div className="slider-container">
-      <Slider {...settings}>
+      <Slider ref={sliderRef} {...settings}>
         {certificateList.map((item, index) => (
-          <div
-            className="col-lg-2 col-md-2 col-sm-6 col-6"
-            key={index}
-          >
+          <div key={index} className="slide-item">
             <figure>
-              <a
-                href={item.src}
-                data-fancybox="gallery"
-                data-caption={item.caption}
-              >
+              <a href={item.src} data-fancybox="gallery" data-caption={item.caption}>
                 <Image
                   src={item.src}
                   width={400}

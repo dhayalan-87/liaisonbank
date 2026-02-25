@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { importantLinks } from '../static/menus.jsx'
+import logoScrolled from "@/assets/images/logo.png"
 import NewLauncb from "@/components/NewLaunch";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 
@@ -10,11 +11,17 @@ export default function Footer() {
   return (
     <>
       <footer className="text-white px-2 py-2 font-sans text-md">
-        <div className="max-w-7xl mx-auto px-4 py-10 flex flex-wrap justify-between gap-10">
+        <div className="max-w-7xl mx-auto px-4 py-10 flex flex-wrap align-items-center justify-between gap-10">
           <div className="flex flex-col max-w-xs flex-1 min-w-[200px]">
-            <h4 className="text-yellow-400 font-semibold mb-4 text-base">Information</h4>
+            {/* <h4 className="text-yellow-400 font-semibold mb-4 text-base">Information</h4> */}
             <p className="leading-relaxed">
-              
+              <Image src={logoScrolled}
+                width={500} 
+                height={500} 
+                quality={75} 
+                alt="Call Us" 
+                loading="lazy"
+              />
             </p>
           </div>
 
@@ -47,7 +54,7 @@ export default function Footer() {
 
         </div>
 
-        <div className="max-w-7xl mx-auto border-t border-gray-800 py-4 text-center text-white-500 text-md">
+        <div className="max-w-7xl mx-auto border-t border-gray-800 py-4 text-center text-white-500 text-md mb-5">
           © 2026 by  Liaison Bank | All Rights Reserved
         </div>
         <ScrollToTopButton />

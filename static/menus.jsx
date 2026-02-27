@@ -7,7 +7,7 @@ const navLinks = [
   { name: "Our Clients", href: "/client-liaison" },
   { 
     name: "Our Expertise", 
-    href: "#", 
+    href: "/our-expertise", 
     submenu: [
       { name: "Residential", href: "/residential" },
       { name: "For Garment Manufacturing Units", href: "/forgarment-manufacturing-units" },
@@ -23,14 +23,14 @@ const navLinks = [
 const importantLinks = [
   // { name: "Home", href: "/" },
   // { name: "About", href: "/about-us-liaison" },
-  { name: "Article", href: "/terms-of-service" },
-  { name: "CEO's Desk", href: "/ceo-desk" },
+  { name: "Article", href: "/article-liaison-bank" },
+  { name: "CEO's Desk", href: "/ceos-desk" },
   { name: "Careers", href: "/careers-liaison-bank/" },
   // { name: "Client", href: "/client-liaison/" },
   // { name: "Process", href: "/process-liaison-bank" },
-  { name: "Testimonials", href: "/testimonials" },
+  { name: "Testimonials", href: "/testimonials-liaison-bank" },
   { name: "Privacy Policy", href: "/privacy-policy" },
-  { name: "Terms of Service", href: "/terms-of-service" },
+  { name: "Terms of Service", href: "/terms-and-conditions" },
   { name: "Sitemap", href: "/sitemap" }
 ]
 

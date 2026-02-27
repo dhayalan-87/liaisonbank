@@ -1,12 +1,12 @@
-
 "use client";
 // import Image from "next/image";
 import Link from "next/link";
 import useBodyClass from '@/components/useBodyClass'; // Adjust path as needed
 import PageTitleWave from '@/components/PageTitleWave';
 
-export default function CeosDeskPage() {
-  useBodyClass('ceo');
+// const AboutUsLiaisonPage = () => {
+  export default function SitemapLiaisonPage() {
+  useBodyClass('sitemap');
   return (
     <>
       <div className="page-header">
@@ -17,7 +17,7 @@ export default function CeosDeskPage() {
               <div className="row justify-content-center text-center">
                 <div className="col-lg-10">
                   <div className="theme-breadcrumb-box">
-                    <h1>CEO&apos;s Desk</h1>
+                    <h1>Sitemap</h1>
 
                     <nav aria-label="breadcrumb" className="page-breadcrumb">
                       <ol className="breadcrumb justify-content-center">
@@ -32,7 +32,7 @@ export default function CeosDeskPage() {
                           className="breadcrumb-item active"
                           aria-current="page"
                         >
-                          CEO&apos;s Desk
+                          Sitemap
                         </li>
                       </ol>
                     </nav>
@@ -46,7 +46,6 @@ export default function CeosDeskPage() {
       </div>
       <section className="container py-5">
         <div className="row justify-content-center text-center">
-          CEO&#39;s Desk
           <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
             <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black">
               To get started, edit the page.js file.
@@ -79,8 +78,10 @@ export default function CeosDeskPage() {
               Documentation
             </a>
           </div>
-      </div>
-    </section>
+        </div>
+      </section>
     </>
   );
 }
+
+// export default AboutUsLiaisonPage;

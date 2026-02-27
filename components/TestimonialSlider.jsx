@@ -1,15 +1,32 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {testimonials} from "@/static/testimonialList";
+import { testimonials } from "@/static/testimonialList";
 
 export default function TestimonialSlider() {
-  const ITEMS_PER_VIEW = 2; // ✅ show two
-  const totalSlides = Math.ceil(testimonials.length / ITEMS_PER_VIEW);
-
+  const [itemsPerView, setItemsPerView] = useState(2); // desktop default
   const [curSlide, setCurSlide] = useState(0);
   const intervalRef = useRef(null);
 
+  /* ------------------ RESPONSIVE ------------------ */
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1023) {
+        setItemsPerView(1);
+      } else {
+        setItemsPerView(2);
+      }
+      setCurSlide(0); // reset slide on resize
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const totalSlides = Math.ceil(testimonials.length / itemsPerView);
+
+  /* ------------------ SLIDE CONTROL ------------------ */
   const nextSlide = () => {
     setCurSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
   };
@@ -18,19 +35,22 @@ export default function TestimonialSlider() {
     setCurSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   };
 
+  /* ------------------ AUTOPLAY ------------------ */
   const startAutoplay = () => {
+    stopAutoplay();
     intervalRef.current = setInterval(nextSlide, 4000);
   };
 
   const stopAutoplay = () => {
-    clearInterval(intervalRef.current);
+    if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
   useEffect(() => {
     startAutoplay();
     return () => stopAutoplay();
-  }, []);
+  }, [itemsPerView, totalSlides]);
 
+  /* ------------------ RENDER ------------------ */
   return (
     <div
       className="slider"
@@ -42,8 +62,8 @@ export default function TestimonialSlider() {
           key={i}
           className="slide"
           style={{
-            width: "50%", // ✅ half width
-            transform: `translateX(${100 * (i - curSlide * ITEMS_PER_VIEW)}%)`,
+            width: `${100 / itemsPerView}%`,
+            transform: `translateX(${100 * (i - curSlide * itemsPerView)}%)`,
           }}
         >
           <div className="testimonial">
@@ -74,6 +94,7 @@ export default function TestimonialSlider() {
           </div>
         </div>
       ))}
+
       {/* Arrows (desktop only via CSS) */}
       <button className="btn left" onClick={prevSlide}>
         ←

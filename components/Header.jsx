@@ -42,7 +42,7 @@ export default function Header() {
   return (
     <>
       <header className={`fixed w-full z-50 transition-all ${isSticky ? "sticky" : ""}`}>
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto">
           <nav className="flex items-center justify-between h-16">
             <Link href="/" onClick={() => setIsOpen(false)}>
               {/* <Image src={logo} alt="Company Logo" width={150} /> */}
@@ -58,7 +58,7 @@ export default function Header() {
             <div className="hidden lg:flex">
               <ul className="flex space-x-8">
                 {navLinks.map((link) => (
-                  <li key={link.name} className="relative group">
+                  <li key={link.name}>
                     {link.href ? (
                       <Link href={link.href} className="hover:text-blue-600">
                         {link.name}

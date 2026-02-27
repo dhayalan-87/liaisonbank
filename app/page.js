@@ -28,6 +28,16 @@ const Home = () => {
 
         </div>
         <Waves />
+        {/* <div className="smallObject">
+          <Image
+            src={smallLogo}
+            alt=""
+            width={257}
+            height={257}
+            className="auto-rotate"
+            priority
+          />
+        </div> */}
       </div>
 
       <section className="welcome">
@@ -111,7 +121,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
 
       <section className="weprovide">
         <div className="container mx-auto  py-5 bg-white">

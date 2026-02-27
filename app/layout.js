@@ -1,12 +1,12 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import ParticlesBackground from "@/components/ParticlesBackground";
-import "@flaticon/flaticon-uicons/css/all/all.css";
+import Cursor from "@/components/Cursor";
 import AOSProvider from '@/components/AOSProvider';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "@flaticon/flaticon-uicons/css/all/all.css";
 import "@fontsource/josefin-sans";
 import "@/assets/scss/globals.scss";
-import Cursor from "@/components/Cursor";
+// import ParticlesBackground from "@/components/ParticlesBackground";
 
 export const metadata = {
   title: "Liaisonbank",
@@ -19,14 +19,15 @@ export default function RootLayout({ children }) {
       <head>
       </head>
       <body className="flex flex-col min-h-screen bg-gray-50">
-            <Cursor />
+        <Cursor />
         {/* <ParticlesBackground /> */}
-        <Header />
-        <main className="flex-grow">
-          <AOSProvider>
+        <AOSProvider>
+          <Header />
+          <main className="flex-grow">
+
             {children}
-          </AOSProvider>
-        </main>
+          </main>
+        </AOSProvider>
         <Footer />
       </body>
     </html>

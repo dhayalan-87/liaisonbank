@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,65 +11,71 @@ import NewLauncb from "@/components/NewLaunch";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export default function Footer() {
-  useEffect(() => {
-    let ticking = false;
-    const footer = document.querySelector("footer");
+  const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+  // useEffect(() => {
+  //   let ticking = false;
+  //   const footer = document.querySelector("footer");
 
-    if (!footer) return;
+  //   if (!footer) return;
 
-    const updateFooter = () => {
-      // ❌ Disable footer reveal below 1023px
-      if (window.innerWidth < 1024) {
-        footer.style.marginBottom = "0px";
-        ticking = false;
-        return;
-      }
+  //   const updateFooter = () => {
+  //     // ❌ Disable footer reveal below 1023px
+  //     if (window.innerWidth < 1024) {
+  //       footer.style.marginBottom = "0px";
+  //       ticking = false;
+  //       return;
+  //     }
 
-      const scrolled = window.scrollY;
-      footer.style.marginBottom = `-${Math.min(scrolled / 5, 600)}px`;
-      ticking = false;
-    };
+  //     const scrolled = window.scrollY;
+  //     footer.style.marginBottom = `-${Math.min(scrolled / 5, 600)}px`;
+  //     ticking = false;
+  //   };
 
-    const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(updateFooter);
-        ticking = true;
-      }
-    };
+  //   const onScroll = () => {
+  //     if (!ticking) {
+  //       requestAnimationFrame(updateFooter);
+  //       ticking = true;
+  //     }
+  //   };
 
-    const onResize = () => {
-      if (window.innerWidth < 1024) {
-        footer.style.marginBottom = "0px";
-      }
-    };
+  //   const onResize = () => {
+  //     if (window.innerWidth < 1024) {
+  //       footer.style.marginBottom = "0px";
+  //     }
+  //   };
 
-    // Initial check
-    onResize();
+  //   // Initial check
+  //   onResize();
 
-    window.addEventListener("scroll", onScroll);
-    window.addEventListener("resize", onResize);
+  //   window.addEventListener("scroll", onScroll);
+  //   window.addEventListener("resize", onResize);
 
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", onScroll);
+  //     window.removeEventListener("resize", onResize);
+  //   };
+  // }, []);
 
   return (
     <>
       <footer className="text-white px-2 py-2 font-sans text-md">
-        <div className="max-w-7xl mx-auto px-4 py-10 flex flex-wrap items-center justify-between gap-10">
+        <div className="foo-column max-w-7xl mx-auto px-4 py-10 flex flex-wrap items-center justify-between gap-10">
           
           {/* Logo & About */}
           <div className="flex flex-col max-w-xs flex-1 min-w-[200px]">
-            <Image
+            <Link href="/"  onClick={scrollToTop}><Image
               src={logoScrolled}
               width={200}
               height={200}
               quality={100}
               alt="Liaison Bank"
               loading="lazy"
-            />
+            /></Link>
             <p className="mt-4 leading-relaxed">
               Liaison Bank, established in 2007 and headquartered in Mumbai, is a
               specialized consultancy firm providing end-to-end licensing,

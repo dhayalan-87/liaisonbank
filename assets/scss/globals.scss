@@ -3,9 +3,11 @@
 $primary-color: #ef7f1a;
 $bg-secodary-theme-color: #000229;
 $footer-bg-color: #000229;
-$font-family:"Josefin Sans", sans-serif;
+// $font-family:"Josefin Sans", sans-serif;
+$font-family:"Roboto", Helvetica, Arial, Verdana, sans-serif;
 :root {
-  --font-family: "Josefin Sans", sans-serif;
+  // --font-family: "Josefin Sans", sans-serif;
+  --font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
   --font-size: 1.2rem;
   --background: #ffffff;
   --foreground: #171717;
@@ -1998,10 +2000,42 @@ header {
     }
   }
 }
+.completed {
+    $transition-speed: 0.2s;
+    table{
+      thead{
+        th:nth-child(2) {
+          // text-align:left;
+          padding:0.2rem;
+        }
+      }
+      tbody{
+        tr td:nth-child(2) {
+          // text-align:left;
+          padding:0.2rem;
+        }
+      }
+    }
+}
 .ongoing{
   $transition-speed: 0.2s;
+  table{
+        thead{
+          th:nth-child(2) {
+            // text-align:left;
+            padding:0.2rem;
+          }
+        }
+        tbody{
+          tr td:nth-child(2) {
+            // text-align:left;
+            padding:0.2rem;
+          }
+        }
+  }
   .projectlist{
-      .ongoing {
+    .ongoing {
+     
         list-style-type: none;
         counter-reset: item;
         max-width:100%;
@@ -2014,6 +2048,7 @@ header {
         padding: 0;
         margin: 0;
         li {
+          
           display:flex;
           align-items: center;
           justify-content: space-between;
@@ -2059,7 +2094,7 @@ header {
         }
 
       .client-name {
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: 500;
       }
 

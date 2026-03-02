@@ -8,7 +8,7 @@ $font-family:"Roboto", Helvetica, Arial, Verdana, sans-serif;
 :root {
   // --font-family: "Josefin Sans", sans-serif;
   --font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
-  --font-size: 1.2rem;
+  --font-size: 1rem;
   --background: #ffffff;
   --foreground: #171717;
   --themeht-primary-color: #ff6004;
@@ -990,9 +990,43 @@ header {
     z-index: 1;
     position: relative;
     ul {
+      // Variables for easy branding updates
+    $primary-orange: #ef7f1a;
+    $hover-white: #ffffff;
+    $mobile-breakpoint: 1280px;
+      &.custom-counter-list {
+        // counter-reset: service-item;
+        li {
+          // counter-increment: service-item;
+          position: relative;
+          list-style: none; // Ensuring clean appearance
+
+          &::before {
+            // content: counter(service-item, decimal-leading-zero);
+            font-size: 24px;
+            font-weight: 900;
+            margin-right: 20px;
+            line-height: 1;
+            // Default: Orange Outline
+            color: transparent;
+            -webkit-text-stroke: 1px $primary-orange;
+            transition: all 0.2s ease;
+            @media (max-width: $mobile-breakpoint) {
+              font-size: 18px;
+            }
+          }
+
+          // Hover state nested within the li
+          &:hover::before {
+            -webkit-text-stroke: 1px $hover-white;
+          }
+        }
+      }
       li {
         margin: 0;
         padding: 2rem 1rem;
+        position:relative;
+        color: white;
         a {
           outline: none;
           font-size: var(--font-size);
@@ -1000,7 +1034,14 @@ header {
           text-decoration: none;
         }
         button{
+          color:white;
           font-size: var(--font-size);
+        }
+        &.has-submenu:hover {
+          ul{
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
         }
       }
     }
@@ -1009,6 +1050,7 @@ header {
       font-size: var(--font-size);
       color: rgb(0, 0, 0);
     }
+    
     ul.submenu {
       display: none;
       position: absolute;
@@ -2003,6 +2045,10 @@ header {
 .completed {
     $transition-speed: 0.2s;
     table{
+      @media (max-width: 1024px){
+        width: 100% !important;
+        font-size: 1rem;
+      }
       thead{
         th:nth-child(2) {
           // text-align:left;
@@ -2020,6 +2066,10 @@ header {
 .ongoing{
   $transition-speed: 0.2s;
   table{
+    @media (max-width: 1024px){
+        width: 100% !important;
+        font-size: 1rem;
+      }
         thead{
           th:nth-child(2) {
             // text-align:left;
@@ -2281,6 +2331,9 @@ footer {
       padding: 0;
       padding-left: 5rem;
       font-size: 1.2rem;
+       @media (max-width: 1023px) {
+         padding:0;
+        }
     }
     .arrow {
       margin: 0 auto;
@@ -2293,6 +2346,9 @@ footer {
         margin-right: -1.2rem;
         position: relative;
         z-index: 2;
+         @media (max-width: 1023px) {
+          display: none;
+        }
       }
     }
   }
@@ -2486,57 +2542,7 @@ footer {
 .callnow {
   background: linear-gradient(0deg, #be2a2a -86.4%, #ef7f1a 94.15%);
 }
-
-/* Show screens smaller than 1024px */
-@media (max-width: 1024px) {
-  .hamburger {
-    display: block;
-    z-index: 50;
-    right: 70px;
-    top: 4.5rem;
-  }
- .overlay {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    overflow-x: hidden;
-    transition: 0.5s;
-
-    &-content {
-      position: relative;
-      top: 10%;
-      width: 100%;
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    a {
-      padding: 8px;
-      text-decoration: none;
-      font-size: 36px;
-      color: #818181;
-      display: block;
-      transition: 0.3s;
-
-      &:hover,
-      &:focus {
-        color: #f1f1f1;
-      }
-    }
-
-    .closebtn {
-      position: absolute;
-      top: 20px;
-      right: 45px;
-      font-size: 60px;
-      color: white;
-    }
-  }
-  /* HAMBURGER */
+/* HAMBURGER */
   .hamburger {
     position: fixed;
     cursor: pointer;
@@ -2556,8 +2562,8 @@ footer {
       display: block;
       height: 2px;
       width: 50px;
-      // background: $primary-color;
-      background: linear-gradient(0deg, #be2a2a -86.4%, #ef7f1a 94.15%);
+      background: white;
+      // background: linear-gradient(0deg, #be2a2a -86.4%, #ef7f1a 94.15%);
       opacity: 1;
       position: absolute;
       left: 0;
@@ -2574,16 +2580,21 @@ footer {
       }
     }
   }
+/* Show screens smaller than 1024px */
+@media only screen and (max-width: 1024px) {
   .hamburger {
-    span {
+    display: block;
+    z-index: 50;
+    right: 5rem;
+    top: 2rem;
+     span {
       &:nth-child(1) {
         top: 0;
       }
     }
-  }
-  .hamburger.open {
-    margin: 0;
-    span {
+    &.active{
+      margin: 0;
+      span {
       &:nth-child(1) {
         top: 9px;
         transform: rotate(135deg);
@@ -2594,7 +2605,55 @@ footer {
         transform: rotate(-135deg);
       }
     }
+    }
   }
+ .overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+
+    &-content {
+      position: relative;
+      top: 10%;
+      width: 100%;
+      text-align: center;
+    }
+
+    a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: var(--font-size);
+      color: white;
+      display: block;
+      transition: 0.3s;
+      text-align: left;
+
+      &:hover,
+      &:focus {
+        color: #f1f1f1;
+      }
+    }
+    button{
+      color: #f1f1f1;
+      padding: 8px;
+    }
+
+    .closebtn {
+      color: #fff;
+      font-size: 4rem;
+      position: absolute;
+      top: 0px;
+      right: 30px;
+      font-weight: 500;
+    }
+  }
+  
 
   .menu-button {
     display: block;

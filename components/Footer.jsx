@@ -70,9 +70,8 @@ export default function Footer() {
           <div className="flex flex-col max-w-xs flex-1 min-w-[200px]">
             <Link href="/"  onClick={scrollToTop}><Image
               src={logoScrolled}
-              width={200}
-              height={200}
-              quality={100}
+              width="auto"
+              height="auto"
               alt="Liaison Bank"
               loading="lazy"
             /></Link>

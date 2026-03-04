@@ -106,11 +106,11 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="ourexpertise">
+      <section className="ourservices">
         <div className="container mx-auto py-5">
           <div className="section-title">
-            <h3>Our Expertise</h3>
-            <h5>We bring our expertise to multiple sectors and create customised solutions for diverse set of business needs.</h5>
+            <h3>Our Services</h3>
+            <h5>We bring our services to multiple sectors and create customised solutions for diverse set of business needs.</h5>
           </div>
           <div></div>
           <div className='col-3 mx-auto'>

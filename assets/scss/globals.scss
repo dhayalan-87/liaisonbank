@@ -1078,7 +1078,7 @@ header {
           width: calc(100vw - 6vw);
           margin: 0 auto;
           transition: all .3s;
-          position: absolute;
+          position: fixed;
           top: 84px;
           left: -68vw;
           right: 0;
@@ -1092,8 +1092,8 @@ header {
           margin: auto;
           padding: 2rem 3rem;
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 20px;
+          // grid-template-columns: repeat(4, 1fr);
+          // gap: 20px;
         }
         .mega-menu-heading {
           text-align: center;
@@ -1106,62 +1106,66 @@ header {
             opacity: 0.8;
           }
         }
-        .mega-menu-grid {
-          // grid-template-columns: repeat(3, 1fr);
-          // gap: 20px;
-          // display: grid;
-          display: flex;
-          flex-direction: column;
-          width: 100%;
+              
+        /* TOP 3 CARDS */
+
+        .mega-top{
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:10px 20px;
+          margin-bottom:10px;
         }
-        .mega-menu-item {
-          padding-right: 20px;
-          h4 {
-            font-size: 1rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+
+        .mega-card{
+          // border:1px solid #555;
+          // text-align:center;
+        }
+
+        .mega-title{
+          padding:10px;
+          border-bottom:1px solid #555;
+          font-weight:600;
+        }
+
+        .mega-section{
+          height: 200px;
+          overflow-y: scroll;
+          padding: 0px 8px 0;
+          // border-bottom:1px solid #555;
+          &:nth-child(2) {
+              padding-top: 0 !important;
           }
-          p {
-            font-size: 14px;
-            opacity: 0.85;
-            margin-bottom: 15px;
+
+          &:last-child{
+            border-bottom:none;
           }
-          a {
-            color: $text-color;
-            text-decoration: none;
-            display: block;
+
+          span{
+            display:block;
+            margin:6px 0;
           }
-            &.has-children {
-              position:relative;
-              ul.mega-submenu {
-                opacity: 0;
-                visibility: hidden;
-                left:4rem;
-                margin: 0 auto;
-                top:0;
-                transition: all .3s;
-                position: absolute;
-                background-color:$primary-color;
-                box-shadow: 5px 5px 5px 0.5;
-                border-radius:4px;
-                li {  
-                  margin:0;
-                  padding:0.5rem;
-                  a{ color:$text-color;}
-                }
-              }
-              &:hover{
-                ul.mega-submenu {
-                    opacity: 1;
-                    visibility: visible;
-                  }
-              }
+        }
+
+        /* BOTTOM VALUES */
+
+        .mega-bottom{
+          // border:1px solid #555;
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          padding:10px;
+          // text-align:center;
+        }
+
+        .mega-bottom-item{
+          display:flex;
+          flex-direction:column;
+          // gap:20px;
+            &:nth-child(2),
+            &:nth-child(3),
+            &:nth-child(5) {
+              margin: 0px;
+              padding: 0 10px;
             }
-          }
-        .mega-link {
-          font-size: 14px;
-          border-bottom: 1px solid #fff;
         }
       }
     }

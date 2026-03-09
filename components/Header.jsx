@@ -22,7 +22,7 @@ export default function Header() {
       <header className={`fixed w-full z-50 py-2 transition-all ${isSticky ? "" : ""}`}>
         <div className="max-w-7xl mx-auto">
           <nav key={pathname} className="flex items-center justify-between h-16">
-            
+
             {/* LOGO: Left to Right Animation */}
             <div data-aos="fade-right" data-aos-duration="1000" data-aos-anchor="html">
               <Link href="/" onClick={() => setIsOpen(false)}>
@@ -40,46 +40,91 @@ export default function Header() {
               <ul className="flex space-x-8">
                 {navLinks.map((link, index) => {
                   const hasSubmenu = link.submenu && link.submenu.length > 0;
+
                   return (
-                    /* MENU LINKS: Top to Bottom Animation with Staggered Delay */
-                    <li 
-                      key={link.name} 
+                    <li
+                      key={link.name}
                       className={`${hasSubmenu ? "has-submenu" : ""}`}
                       data-aos="fade-down"
-                      data-aos-delay={index * 100} // Increments delay for each item
+                      data-aos-delay={index * 100}
                       data-aos-duration="800"
                     >
                       {link.href ? (
-                        <Link href={link.href}>
-                          {link.name}
-                        </Link>
+                        <Link href={link.href}>{link.name}</Link>
                       ) : (
-                        <span className="cursor-pointer">
-                          {link.name}
-                        </span>
+                        <span className="cursor-pointer">{link.name}</span>
                       )}
 
-                        {link.submenu && (
-                          <div className="mega-menu">
-                            <div className="mega-menu-inner">
-                              <div className="mega-menu-grid">
-                                {link.submenu.map((sub) => (
-                                  <div key={sub.name} className="mega-menu-item">
-                                    <Link href={sub.href}>
-                                      <h4>{sub.name}</h4>
+                      {hasSubmenu && (
+                        <div className="mega-menu"   
+                        onMouseEnter={() => document.body.style.overflow = "hidden"}
+                        onMouseLeave={() => document.body.style.overflow = "auto"}>
+                          <div className="mega-menu-inner">
+
+                            {/* TOP CARDS */}
+                            <div className="mega-top">
+                              {link.submenu
+                                .filter((sub) => sub.items)
+                                .map((sub) => {
+                                  // const first = sub.items.slice(0, 3)
+                                  // const second = sub.items.slice(3, 6)
+
+                                  return (
+                                    <div key={sub.name} className="mega-card">
+                                      <h4 className="mega-title">
+                                        <Link href={sub.href || "#"}>{sub.name}</Link>
+                                      </h4>
+
+                                      <div className="mega-section">
+                                        {sub.items.map((item) => (
+                                          <Link key={item.name} href={item.href || "#"}>
+                                            <span>{item.name}</span>
+                                          </Link>
+                                        ))}
+                                      </div>
+
+                                      {/* <div className="mega-section">
+                                        {first.map((item) => (
+                                          <Link key={item.name} href={item.href || "#"}>
+                                            <span>{item.name}</span>
+                                          </Link>
+                                        ))}
+                                      </div>
+
+                                      <div className="mega-section">
+                                        {second.map((item) => (
+                                          <Link key={item.name} href={item.href || "#"}>
+                                            <span>{item.name}</span>
+                                          </Link>
+                                        ))}
+                                      </div> */}
+                                    </div>
+                                  )
+                                })}
+                            </div>
+
+                            {/* BOTTOM GRID */}
+                            <div className="mega-bottom">
+                              {link.submenu
+                                .filter((sub) => !sub.items)
+                                .map((sub) => (
+                                  <div key={sub.name} className="mega-bottom-item">
+                                    <Link href={sub.href || "#"}>
+                                      {sub.name}
                                     </Link>
                                   </div>
                                 ))}
-                              </div>
                             </div>
+
                           </div>
-                        )}
+                        </div>
+                      )}
                     </li>
                   )
                 })}
               </ul>
             </div>
-            
+
             <button
               className={`hamburger xl:hidden ${isOpen ? "active" : ""}`}
               onClick={() => setIsOpen(!isOpen)}

@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import { Fancybox } from "@fancyapps/ui";
-import { certificateList } from "../static/certificateList";
+import { certificateList } from "../lib/data/certificateList";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

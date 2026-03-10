@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import ImageWave from '@/components/ImageWave';
 import ExpertImg from '@/components/expertImg';
-import { services } from "@/static/servicesData";
+import { services } from "@/lib/data/servicesData";
 
 export default function ServiceContent({ activeIndex }) {
     const service = services[activeIndex];

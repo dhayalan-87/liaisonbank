@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import logoScrolled from "@/assets/images/logo_grey.png"
-import { navLinks } from '@/static/menus'
+import { navLinks } from '@/lib/data/menus'
 
 export default function Header() {
   const pathname = usePathname();

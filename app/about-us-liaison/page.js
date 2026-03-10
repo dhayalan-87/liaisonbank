@@ -47,7 +47,9 @@ export default function AboutUsLiaisonPage() {
       </div>
       <section className="container py-5">
         <div className="row justify-content-center text-center">
-          
+          <div className="section-title" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+            <h3>We help you navigate the complexities of licence acquisitions and <br/>take away the burden of uncertainty and time constraints. </h3>
+          </div>
         </div>
       </section>
     </>

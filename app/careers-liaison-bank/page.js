@@ -4,6 +4,7 @@ import Link from "next/link";
 import useBodyClass from '@/components/useBodyClass'; // Adjust path as needed
 import PageTitleWave from '@/components/PageTitleWave';
 import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
+import JobsPage from "@/components/JobPage";
 
 
 export default function CareersLiaisonPage() {
@@ -48,7 +49,7 @@ export default function CareersLiaisonPage() {
       </div>
       <section className="container py-5">
         <div className="row justify-content-center text-center">
-         
+          <JobsPage />
         </div>
       </section>
     </>

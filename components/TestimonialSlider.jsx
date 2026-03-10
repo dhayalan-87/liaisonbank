@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { testimonials } from "@/static/testimonialList";
+import { testimonials } from "@/lib/data/testimonialList";
 
 export default function TestimonialSlider() {
   const [itemsPerView, setItemsPerView] = useState(2); // desktop default

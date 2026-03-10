@@ -1,6 +1,6 @@
 import Slider from 'react-infinite-logo-slider'
 import Image from "next/image";
-import { clientImageName } from "@/static/clientImageList";
+import { clientImageName } from "@/lib/data/clientImageList";
 
 const ClientScroller = () => {
     // const loopClients = [...clientImageName, ...clientImageName];

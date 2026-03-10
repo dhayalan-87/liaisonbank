@@ -1,6 +1,6 @@
 import Image from "next/image";
 import rightTick from "@/assets/images/rightTick.svg";
-import { services } from "@/static/servicesData";
+import { services } from "@/lib/data/servicesData";
 
 export default function ServiceList({ activeIndex, onChange }) {
   return (

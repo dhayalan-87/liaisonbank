@@ -4,7 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
-import { importantLinks } from "../static/menus.jsx";
+import { importantLinks } from "../lib/data/menus.js";
 import logoScrolled from "@/assets/images/logo.png";
 
 import NewLauncb from "@/components/NewLaunch";

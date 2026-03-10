@@ -6,7 +6,7 @@ import PageTitleWave from '@/components/PageTitleWave';
 import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
 import AnimatedCounter from '@/components/AnimateCounter';
 import rightTick from "@/assets/images/rightTick.svg";
-import {completedList} from '@/static/completedList';
+import {completedList} from '@/lib/data/completedList';
 
 
 export default function CompletedLiaisonbankPage() {

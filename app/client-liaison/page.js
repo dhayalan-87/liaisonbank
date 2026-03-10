@@ -4,7 +4,7 @@ import Link from "next/link";
 import useBodyClass from '@/components/useBodyClass'; // Adjust path as needed
 import PageTitleWave from '@/components/PageTitleWave';
 import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
-
+import OurClients from "@/components/OurClients/OurClients"
 
 export default function ClientLiaisonbankPage() {
   useBodyClass('client');
@@ -48,7 +48,18 @@ export default function ClientLiaisonbankPage() {
       </div>
       <section className="container py-5">
         <div className="row justify-content-center text-center">
+          <div className="section-title" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+            <h3>We pioneer innovative and sustainable solutions to address <br />the most complex challenges faced by our clients. </h3>
+          </div>
+          <div className="client-section">
+            <div className="row justify-content-center text-center">
 
+              <div className="client-grid">
+                <OurClients />
+              </div>
+
+            </div>
+          </div>
         </div>
       </section>
     </>

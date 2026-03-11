@@ -9,11 +9,16 @@ export default function ServicesSection() {
 
     return (
         <>
-            <ServiceList
-                activeIndex={activeIndex}
-                onChange={setActiveIndex}
-            />
-            <ServiceContent activeIndex={activeIndex} />
+           <div data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                <ServiceList
+                    activeIndex={activeIndex}
+                    onChange={setActiveIndex}
+                />
+            </div>
+
+            <div data-aos="fade-left" data-aos-duration="600" data-aos-delay="400">
+                <ServiceContent activeIndex={activeIndex} />
+            </div>
         </>
     );
 }

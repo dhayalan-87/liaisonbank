@@ -1,35 +1,40 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { usePathname } from 'next/navigation'; // Import this
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-const AOSProvider = ({ children }) => {
-  const pathname = usePathname(); // Get current URL path
+export default function AOSProvider({ children }) {
+  const pathname = usePathname();
+
   useEffect(() => {
-    // 1. Force the browser to start at the top on refresh
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
+    // Prevent browser restoring previous scroll
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
     }
+
+    // Scroll to top on route change
     window.scrollTo(0, 0);
 
-    // 2. Initialize AOS with a delay
-    // This prevents AOS from "jumping" to elements before the page layout is set
+    // Delay AOS init to avoid hydration jump
     const timer = setTimeout(() => {
       AOS.init({
-        duration: 1200,
-        once: true,       // Change to true to prevent re-triggering issues
-        offset: 50,       // Start animation slightly later
+        duration: 1000,
+        easing: "ease-out-cubic",
+        debounceDelay: 50,
+        once: false,
+        mirror: true,
+        offset: 50,
         delay: 0,
       });
-    }, [pathname]); // Dependency array: triggers on path change
-    // }, 200); // 200ms delay is usually enough for Next.js hydration
+
+      // Refresh animations after route change
+      AOS.refresh();
+    }, 200);
 
     return () => clearTimeout(timer);
-  },);
+  }, [pathname]);
 
   return <>{children}</>;
-};
-
-export default AOSProvider; 
+}

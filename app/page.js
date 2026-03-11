@@ -26,7 +26,7 @@ const Home = () => {
     <>
       <div className="hero-section page-header">
         <div className="inner-header">
-          {/* <HeroSection /> */}
+          <HeroSection />
         </div>
         <Waves />
         {/* <div className="smallObject">
@@ -41,9 +41,9 @@ const Home = () => {
         </div> */}
       </div>
 
-      <section className="welcome">
+      <section className="welcome" >
         <div className="container mx-auto py-5 bg-white">
-          <div className="smallObject">
+          <div className="smallObject" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
             <Image
               src={smallLogo}
               alt=""
@@ -54,7 +54,7 @@ const Home = () => {
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 d-flex justify-content-end">
+            <div className="p-4 d-flex justify-content-end" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
               <Image
                 src={welcomeImg}
                 width={500}
@@ -65,13 +65,13 @@ const Home = () => {
             </div>
             <div className=" p-4">
               <div className='section-title'>
-                <h6>Welcome to, Liaison Bank  </h6>
-                <h3>Your Partner in
+                <h6 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">Welcome to, Liaison Bank  </h6>
+                <h3 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">Your Partner in
                   <span className='theme-color'>Licensing</span> and
                   <span className='theme-color'>Liaisoning</span>
                 </h3>
               </div>
-              <div className='home-abt'>
+              <div className='home-abt'data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
                 {/* <h2 className="text-xl font-semibold mb-2">Column 2</h2> */}
                 <p>We take care of the intricacies and uncertainties, allowing you to redirect your energy towards your core priorities and business objectives. This ensures a smoother and more efficient experience, providing you with the peace of mind to concentrate on what matters most to your success.</p>
                 <p>Our commitment is to deliver a seamless and reliable experience that brings clarity, confidence, and peace of mind. With our expertise supporting your operations, you can move forward with assurance—concentrating on strategic growth and achieving your business objectives while we handle the rest.</p>
@@ -80,7 +80,7 @@ const Home = () => {
               </div>
               <div className='d-flex flex-wrap justify-content-between align-items-center'>
                 <div className='author-meta d-flex flex-wrap align-items-center'>
-                  <div className='col-auto author-img'>
+                  <div className='col-auto author-img' data-aos="zoom-in" data-aos-duration="600" data-aos-delay="100">
                     <Image
                       src={ceoImg}
                       width={60}
@@ -91,14 +91,32 @@ const Home = () => {
                     />
                   </div>
                   <div className='col-auto'>
-                    <h4 className="author-title">Deva Biradar</h4>
-                    <span className="author-desc">Chief Executive Officer</span>
+                    <h4 className="author-title" data-aos="fade-left" data-aos-duration="600" data-aos-delay="100">Deva Biradar</h4>
+                    <span className="author-desc" data-aos="fade-left" data-aos-duration="600" data-aos-delay="200">Chief Executive Officer</span>
                   </div>
                 </div>
-                <Link href="/" className="themeht-btn primary-btn d-flex align-item-center mr-2 mt-4">CEO&apos;s DESK &nbsp;
-                  <svg xmlns="http://www.w3.org" width="22" height="22" fill="currentColor" className="bi bi-arrow-right" viewBox="0 0 16 16">
-                    <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                  </svg>&nbsp;
+                <Link
+                  href="/"
+                  className="themeht-btn primary-btn d-flex align-items-center mr-2 mt-4"
+                  data-aos="fade-left"
+                  data-aos-duration="700"
+                  data-aos-delay="400"
+                >
+                  CEO&apos;s DESK&nbsp;
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    fill="currentColor"
+                    className="bi bi-arrow-right"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                    />
+                  </svg>
                 </Link>
               </div>
             </div>
@@ -109,12 +127,12 @@ const Home = () => {
       <section className="ourservices">
         <div className="container mx-auto py-5">
           <div className="section-title">
-            <h3>Our Services</h3>
-            <h5>We bring our services to multiple sectors and create customised solutions for diverse set of business needs.</h5>
+            <h3 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">Our Services</h3>
+            <h5 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">We bring our services to multiple sectors and create customised solutions for diverse set of business needs.</h5>
           </div>
           <div></div>
-          <div className='col-3 mx-auto'>
-            <Link href="/" className="themeht-btn primary-btn d-flex justify-content-center align-item-center mr-2">View Details &nbsp;
+          <div className='col-3 mx-auto' data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+            <Link href="/" data-aos="flip-in" data-aos-duration="600" data-aos-delay="100" className="themeht-btn primary-btn d-flex justify-content-center align-item-center mr-2">View Details &nbsp;
                   <svg xmlns="http://www.w3.org" width="22" height="22" fill="currentColor" className="bi bi-arrow-right" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
                   </svg>&nbsp;
@@ -126,7 +144,7 @@ const Home = () => {
       <section className="weprovide">
         <div className="container mx-auto  py-5 bg-white">
           <div className="section-title">
-            <h3>What we Provide ?</h3>
+            <h3 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">What we Provide ?</h3>
           </div>
           <section className="services-section">
             <div className="services-grid">
@@ -137,9 +155,9 @@ const Home = () => {
       </section>
 
       <section className="awardscertification">
-        <div className="container mx-auto py-5">
+        <div className="container-fluid mx-auto py-5">
           <div className="section-title">
-            <h3>Awards & Certifications</h3>
+            <h3 data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">Awards & Certifications</h3>
           </div>
 
           <div ref={fancyboxRef} className="row  py-5 d-flex align-items-center">
@@ -153,7 +171,7 @@ const Home = () => {
       <section className="clientfeedback py-5">
         <div className="container-fluid mx-auto px-0 bg-white">
           <div className="section-title">
-            <h3>What Clients Say</h3>
+            <h3 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">What Clients Say</h3>
           </div>
           <TestimonialSlider  />
         </div>
@@ -162,7 +180,7 @@ const Home = () => {
       <section className="ourclients">
         <div className="container-fluid mx-auto px-0 py-5 bg-white">
           <div className="section-title">
-            <h3>Our Latest Clients</h3>
+            <h3 data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">Our Latest Clients</h3>
           </div>
           <div>
             <ClientScroller />
@@ -174,7 +192,7 @@ const Home = () => {
       <section className="faqs">
         <div className="container mx-auto  py-4 bg-white">
           <div className="section-title">
-            <h3>Frequently ask Questions</h3>
+            <h3  data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">Frequently ask Questions</h3>
           </div>
           <div>
 

@@ -1,5 +1,5 @@
 import { Barlow } from "next/font/google";
-
+import LenisScroll from "@/components/LenisScroller/LenisScroll";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
@@ -31,23 +31,19 @@ export const metadata = {
 // Root Layout
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en">
       <body className={`${barlow.className} flex flex-col min-h-screen bg-gray-50`}>
         <ReduxProvider>
+          <LenisScroll />   {/* Smooth Scroll */}
           <Cursor />
-
-          <AOSProvider>
-            <Header />
-
-            <div className="menu-overlay"></div>
-
-            <main className="flex-grow">
-              {children}
-            </main>
-
-            <Footer />
-          </AOSProvider>
-
+            <AOSProvider>
+              <Header />
+              <div className="menu-overlay"></div>
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </AOSProvider>
         </ReduxProvider>
       </body>
     </html>

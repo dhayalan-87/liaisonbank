@@ -5,7 +5,8 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import logoScrolled from "@/assets/images/logo_grey.png"
-import { navLinks } from '@/lib/data/menus'
+import { navLinks } from '@/lib/data/menus';
+import pdfIcon from "@/public/pdf_icon.png";
 
 export default function Header() {
   const pathname = usePathname();
@@ -56,9 +57,9 @@ export default function Header() {
                       )}
 
                       {hasSubmenu && (
-                        <div className="mega-menu"   
-                        onMouseEnter={() => document.body.style.overflow = "hidden"}
-                        onMouseLeave={() => document.body.style.overflow = "auto"}>
+                        <div className="mega-menu" data-lenis-prevent
+                          onMouseEnter={() => document.body.style.overflow = "hidden"}
+                          onMouseLeave={() => document.body.style.overflow = "auto"}>
                           <div className="mega-menu-inner">
 
                             {/* TOP CARDS */}
@@ -66,38 +67,41 @@ export default function Header() {
                               {link.submenu
                                 .filter((sub) => sub.items)
                                 .map((sub) => {
-                                  // const first = sub.items.slice(0, 3)
-                                  // const second = sub.items.slice(3, 6)
-
                                   return (
                                     <div key={sub.name} className="mega-card">
+
                                       <h4 className="mega-title">
                                         <Link href={sub.href || "#"}>{sub.name}</Link>
                                       </h4>
 
                                       <div className="mega-section">
                                         {sub.items.map((item) => (
-                                          <Link key={item.name} href={item.href || "#"}>
-                                            <span>{item.name}</span>
-                                          </Link>
+                                          <div key={item.name} className="mega-item">
+
+                                            <Link href={item.href || "#"} className="mega-link">
+                                              <span>{item.name}</span>
+                                            </Link>
+
+                                            {item.pdf && (
+                                              <a
+                                                href={item.pdf}
+                                                download
+                                                target="_blank"
+                                                className="pdf-download"
+                                              >
+                                                <Image
+                                                  src={pdfIcon}
+                                                  alt="Download PDF"
+                                                  width={16}
+                                                  height={16}
+                                                />
+                                              </a>
+                                            )}
+
+                                          </div>
                                         ))}
                                       </div>
 
-                                      {/* <div className="mega-section">
-                                        {first.map((item) => (
-                                          <Link key={item.name} href={item.href || "#"}>
-                                            <span>{item.name}</span>
-                                          </Link>
-                                        ))}
-                                      </div>
-
-                                      <div className="mega-section">
-                                        {second.map((item) => (
-                                          <Link key={item.name} href={item.href || "#"}>
-                                            <span>{item.name}</span>
-                                          </Link>
-                                        ))}
-                                      </div> */}
                                     </div>
                                   )
                                 })}
@@ -109,9 +113,27 @@ export default function Header() {
                                 .filter((sub) => !sub.items)
                                 .map((sub) => (
                                   <div key={sub.name} className="mega-bottom-item">
-                                    <Link href={sub.href || "#"}>
+
+                                    <Link href={sub.href || "#"} className="mega-bottom-link">
                                       {sub.name}
                                     </Link>
+
+                                    {sub.pdf && (
+                                      <a
+                                        href={sub.pdf}
+                                        target="_blank"
+                                        download
+                                        className="pdf-download"
+                                      >
+                                        <Image
+                                          src={pdfIcon}
+                                          alt="Download PDF"
+                                          width={16}
+                                          height={16}
+                                        />
+                                      </a>
+                                    )}
+
                                   </div>
                                 ))}
                             </div>

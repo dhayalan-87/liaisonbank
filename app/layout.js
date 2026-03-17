@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
 import AOSProvider from "@/components/AOSProvider";
 import ReduxProvider from "@/components/ReduxProvider";
-
+import Script from "next/script"; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@flaticon/flaticon-uicons/css/all/all.css";
 import "@fontsource/josefin-sans";
@@ -30,6 +30,26 @@ export const metadata = {
 
 // Root Layout
 export default function RootLayout({ children }) {
+  const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Liaison Bank",
+  url: "https://liaisonbank.com",
+  logo: "https://liaisonbank.com/logo.png",
+  sameAs: [
+    "https://www.facebook.com/liaisonbank",
+    "https://www.linkedin.com/company/liaisonbank",
+    "https://twitter.com/liaisonbank",
+    "https://www.instagram.com/liaisonbank"
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+91-9769458515",
+    contactType: "customer service",
+    areaServed: "IN",
+    availableLanguage: ["English"]
+  }
+};
   return (
     <html lang="en">
       <body className={`${barlow.className} flex flex-col min-h-screen bg-gray-50`}>
@@ -45,6 +65,13 @@ export default function RootLayout({ children }) {
               <Footer />
             </AOSProvider>
         </ReduxProvider>
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaData),
+          }}
+        />
       </body>
     </html>
   );

@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { increment } from "@/lib/features/counterSlice";
 import useBodyClass from '@/components/useBodyClass'; // Adjust path as needed
-import PageTitleWave from '@/components/PageTitleWave';
-import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
+// import PageTitleWave from '@/components/PageTitleWave';
+// import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
 
 export default function LicensingPage() {
   useBodyClass('licensing');
@@ -16,7 +16,7 @@ export default function LicensingPage() {
     <>
       <div className="page-header">
         <div className="inner-header">
-          <PageTitleWave />
+          {/* <PageTitleWave /> */}
           <div className="page-title">
             <div className="container">
               <div className="row justify-content-center text-center">
@@ -47,7 +47,7 @@ export default function LicensingPage() {
               </div>
             </div>
           </div>
-          <PageTitleWaveLeft />
+          {/* <PageTitleWaveLeft /> */}
         </div>
       </div>
       <section className="container py-5">

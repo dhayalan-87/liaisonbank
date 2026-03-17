@@ -3,9 +3,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import useBodyClass from '@/components/useBodyClass'; // Adjust path as needed
-import Waves from "@/components/waves";
+// import Waves from "@/components/waves";
 
-import smallLogo from "@/assets/images/shape-small-1-1.png"
+// import smallLogo from "@/assets/images/shape-small-1-1.png"
 import welcomeImg from "@/assets/images/group.jpg"
 import ceoImg from "@/assets/images/deva-CEO.jpg"
 import ServicesSection from "@/components/ServicesSection";
@@ -14,6 +14,7 @@ import useFancybox from '@/components/useFancybox';
 import TestimonialSlider  from '@/components/TestimonialSlider';
 import CertificateScroller from '@/components/CertificateScroller';
 import HeroSection  from "@/components/HeroSection/HeroSection";
+import OurServices from '@/components/OurServices/page';
 
 const Home = () => {
   useBodyClass('home');
@@ -28,7 +29,7 @@ const Home = () => {
         <div className="inner-header">
           <HeroSection />
         </div>
-        <Waves />
+        {/* <Waves /> */}
         {/* <div className="smallObject">
           <Image
             src={smallLogo}
@@ -43,7 +44,7 @@ const Home = () => {
 
       <section className="welcome" >
         <div className="container mx-auto py-5 bg-white">
-          <div className="smallObject" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+          {/* <div className="smallObject" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
             <Image
               src={smallLogo}
               alt=""
@@ -52,9 +53,9 @@ const Home = () => {
               className="auto-rotate"
               priority
             />
-          </div>
+          </div> */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 d-flex justify-content-end" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+            <div className="p-4 d-flex justify-content-end letbanner" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
               <Image
                 src={welcomeImg}
                 width={500}
@@ -130,8 +131,10 @@ const Home = () => {
             <h3 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">Our Services</h3>
             <h5 data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">We bring our services to multiple sectors and create customised solutions for diverse set of business needs.</h5>
           </div>
-          <div></div>
-          <div className='col-3 mx-auto' data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+          <div className='col-12 mx-auto' data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+            <OurServices/>
+          </div>
+          <div className='col-3 mx-auto d-none' data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
             <Link href="/" data-aos="flip-in" data-aos-duration="600" data-aos-delay="100" className="themeht-btn primary-btn d-flex justify-content-center align-item-center mr-2">View Details &nbsp;
                   <svg xmlns="http://www.w3.org" width="22" height="22" fill="currentColor" className="bi bi-arrow-right" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />

@@ -15,7 +15,9 @@ const ClientScroller = () => {
                 direction="right"   // ✅ KEY CHANGE
             >
                 {clientImageName.map((name, index) => (
-                    <Slider.Slide key={index}>
+                    <Slider.Slide key={index} 
+                        data-aos="fade-up"
+                        data-aos-delay={index * 100}>
                         <Image
                             src={`/clients/${name}.jpg`}
                             width={175}

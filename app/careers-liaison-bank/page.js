@@ -73,7 +73,7 @@ export default function CareersLiaisonPage() {
                  */}
                 </div>  
               <div className="mt-2 col-4 text-start">
-                <Link className="themeht-btn primary-btn px-4 py-2" href="https://liaisonbank.frappe.cloud/jobs" target="_blank">
+                <Link className="themeht-btn primary-btn px-4 py-2 " href="https://liaisonbank.frappe.cloud/jobs" target="_blank">
                 Careers List</Link>
               </div>
                      

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import useBodyClass from '@/components/useBodyClass'; // Adjust path as needed
 import PageTitleWave from '@/components/PageTitleWave';
-import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
+// import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
 
 
 // const AboutUsLiaisonPage = () => {
@@ -13,7 +13,7 @@ import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
     <>
       <div className="page-header">
         <div className="inner-header">
-          <PageTitleWave />
+          {/* <PageTitleWave /> */}
           <div className="page-title">
             <div className="container">
               <div className="row justify-content-center text-center">
@@ -44,7 +44,7 @@ import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
               </div>
             </div>
           </div>
-          <PageTitleWaveLeft />
+          {/* <PageTitleWaveLeft /> */}
         </div>
       </div>
       <section className="container py-5">

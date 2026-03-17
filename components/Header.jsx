@@ -41,7 +41,6 @@ export default function Header() {
               <ul className="flex space-x-8">
                 {navLinks.map((link, index) => {
                   const hasSubmenu = link.submenu && link.submenu.length > 0;
-
                   return (
                     <li
                       key={link.name}
@@ -53,7 +52,11 @@ export default function Header() {
                       {link.href ? (
                         <Link href={link.href}>{link.name}</Link>
                       ) : (
-                        <span className="cursor-pointer">{link.name}</span>
+                        <span
+                          className="cursor-pointer"
+                        >
+                          {link.name}
+                        </span>
                       )}
 
                       {hasSubmenu && (
@@ -67,41 +70,75 @@ export default function Header() {
                               {link.submenu
                                 .filter((sub) => sub.items)
                                 .map((sub) => {
+                                  const isLargeList = sub.items.length > 4;
                                   return (
                                     <div key={sub.name} className="mega-card">
 
                                       <h4 className="mega-title">
-                                        <Link href={sub.href || "#"}>{sub.name}</Link>
+                                        <Link href={sub.href || "#"}>{sub.name}</Link> 
+                                        <a
+                                          href={sub.pdf}
+                                          download
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="pdf-download"
+                                        >
+                                          <Image
+                                            src={pdfIcon}
+                                            alt="Download PDF"
+                                            width={16}
+                                            height={16}
+                                          />
+                                        </a>
                                       </h4>
+                                     <ul className={`mega-section ${isLargeList ? "has-more" : ""}`}>
+                                        {sub?.items?.map((item, index) => (
+                                          <li
+                                            key={item.name || index}
+                                            className={`mega-item ${item.children ? "has-child" : ""}`}
+                                          >
+                                              <Link href={item?.href || "#"} className="mega-link">
+                                                <span>{item?.name}</span>
+                                              </Link>
 
-                                      <div className="mega-section">
-                                        {sub.items.map((item) => (
-                                          <div key={item.name} className="mega-item">
+                                              {item?.pdf && (
+                                                <a
+                                                  href={item.pdf}
+                                                  download
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  className="pdf-download"
+                                                >
+                                                  <Image src={pdfIcon} alt="Download PDF" width={16} height={16} />
+                                                </a>
+                                              )}
 
-                                            <Link href={item.href || "#"} className="mega-link">
-                                              <span>{item.name}</span>
-                                            </Link>
-
-                                            {item.pdf && (
-                                              <a
-                                                href={item.pdf}
-                                                download
-                                                target="_blank"
-                                                className="pdf-download"
-                                              >
-                                                <Image
-                                                  src={pdfIcon}
-                                                  alt="Download PDF"
-                                                  width={16}
-                                                  height={16}
-                                                />
-                                              </a>
+                                            {/* SUBMENU */}
+                                            {item?.children && (
+                                              <ul className="mega-submenu">
+                                                {item.children.map((child, i) => (
+                                                  <li key={i} 
+                                                  className={`mega-item ${child?.children ? "has-child2" : ""}`}>
+                                                    <Link href={child.href || "#"}>{child.name}</Link>
+                                                      {/* THIRD LEVEL CHILDREN */}
+                                                      {child?.children && (
+                                                        <ul className="mega-submenu-level2">
+                                                          {child.children.map((subChild, j) => (
+                                                            <li key={j}>
+                                                              <Link href={subChild?.href || "#"}>
+                                                                {subChild?.name}
+                                                              </Link>
+                                                            </li>
+                                                          ))}
+                                                        </ul>
+                                                      )}
+                                                  </li>
+                                                ))}
+                                              </ul>
                                             )}
-
-                                          </div>
+                                          </li>
                                         ))}
-                                      </div>
-
+                                      </ul>
                                     </div>
                                   )
                                 })}
@@ -113,11 +150,9 @@ export default function Header() {
                                 .filter((sub) => !sub.items)
                                 .map((sub) => (
                                   <div key={sub.name} className="mega-bottom-item">
-
                                     <Link href={sub.href || "#"} className="mega-bottom-link">
                                       {sub.name}
                                     </Link>
-
                                     {sub.pdf && (
                                       <a
                                         href={sub.pdf}

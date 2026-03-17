@@ -2,8 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import useBodyClass from '@/components/useBodyClass'; // Adjust path as needed
-import PageTitleWave from '@/components/PageTitleWave';
-import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
+// import PageTitleWave from '@/components/PageTitleWave';
+// import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
 import AnimatedCounter from '@/components/AnimateCounter';
 import Deva from "@/assets/images/amc/deva.png";
 import dbre from "@/assets/images/amc/dbre.png";
@@ -17,7 +17,7 @@ export default function AMCPage() {
     <>
       <div className="page-header">
         <div className="inner-header">
-          <PageTitleWave />
+          {/* <PageTitleWave /> */}
           <div className="page-title">
             <div className="container">
               <div className="row justify-content-center text-center">
@@ -48,7 +48,7 @@ export default function AMCPage() {
               </div>
             </div>
           </div>
-          <PageTitleWaveLeft />
+          {/* <PageTitleWaveLeft /> */}
         </div>
       </div>
       <section className="container py-5">

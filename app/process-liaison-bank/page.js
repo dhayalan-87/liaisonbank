@@ -2,8 +2,8 @@
 // import Image from "next/image";
 import Link from "next/link";
 import useBodyClass from '@/components/useBodyClass'; // Adjust path as needed
-import PageTitleWave from '@/components/PageTitleWave';
-import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
+// import PageTitleWave from '@/components/PageTitleWave';
+// import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
 
 
 export default function ProcessLiaisonbankPage() {
@@ -12,7 +12,7 @@ export default function ProcessLiaisonbankPage() {
     <>
       <div className="page-header">
         <div className="inner-header">
-          <PageTitleWave />
+          {/* <PageTitleWave /> */}
           <div className="page-title">
             <div className="container">
               <div className="row justify-content-center text-center">
@@ -43,7 +43,7 @@ export default function ProcessLiaisonbankPage() {
               </div>
             </div>
           </div>
-          <PageTitleWaveLeft />
+          {/* <PageTitleWaveLeft /> */}
         </div>
       </div>
       <section className="container py-5">

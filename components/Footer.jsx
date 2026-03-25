@@ -123,21 +123,21 @@ export default function Footer() {
 
             <div className="mb-3 flex items-center gap-2"  data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
               {/* <Image src="/phone.png" width={25} height={25} alt="Call" /> */}
-              <Image src="/phone.svg" width={30} height={30} alt="Call" />
+              <Image src="/phone-call-white-icon.png" width={30} height={30} alt="Call" />
               <a href="tel:+919136443852">+91 91364 43852</a>
               <span>/</span>
               <a href="tel:+919321709258">932170 9258</a>
             </div>
 
             <div className="mb-3 flex items-center gap-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-              <Image src="/mail_g.svg" width={25} height={25} alt="Email" />
+              <Image src="/Gmail_Logo_White_512px.png" width={25} height={25} alt="Email" />&nbsp;
               <a href="mailto:ceo.desk@liaisonbank.com" target="_blank">
                 ceo.desk@liaisonbank.com
               </a>
             </div>
 
             <div className="mb-3 flex items-center gap-1"  data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
-              <Image src="/timer.svg" width={35} height={35} alt="Office Time" style={{"marginLeft": "-0.3rem"}} />
+              <Image src="/clock.png" width={30} height={30} alt="Office Time" style={{"marginLeft": "-0.3rem"}} />&nbsp;&nbsp;
               <span>Mon – Sat : 8:00am to 5:00pm</span>
             </div>
           </div>

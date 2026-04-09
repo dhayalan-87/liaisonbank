@@ -5,7 +5,6 @@ import useBodyClass from '@/components/useBodyClass'; // Adjust path as needed
 import license from "@/assets/images/liaisoning-in-real-estate.jpg"
 import licenseService from "@/assets/images/licensing-services.png"
 import TeamSwiper from "@/components/TeamSwiper";
-// import TeamGrid from "@/components/TeamGrid";
 // import { teamData } from "@/lib/data/teamData";
 // import PageTitleWave from '@/components/PageTitleWave';
 // import PageTitleWaveLeft from '@/components/PageTitleWaveLeft';
@@ -110,8 +109,7 @@ export default function AboutUsLiaisonPage() {
           <div className="section-title" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
             <h3>Our Team </h3>
           </div>
-            {/* <TeamGrid teamData={teamData} /> */}
-              <TeamSwiper />
+            <TeamSwiper />
           <div>
             
           </div>

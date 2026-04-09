@@ -50,7 +50,7 @@ export default function CeosDeskPage() {
         <div className="row justify-content-center text-center">
           <div className="section-title px-5 w-75 theme-secondary" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
             <h3 className="pt-4">“It’s not about waiting for things to fall into place, it’s about what you make of yourself.”</h3>
-            <h5 className="text-end">— Deva Biradar</h5>
+            <h5 className="text-end">— Mr. Mahadev Biradar</h5>
             
           </div>
       </div>

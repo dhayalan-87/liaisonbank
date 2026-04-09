@@ -6,6 +6,7 @@ const nextConfig = {
   // ✅ Image optimization config
   images: {
     domains: ["picsum.photos"],
+    formats: ['image/avif', 'image/webp'],
   },
 
   // ✅ Security headers

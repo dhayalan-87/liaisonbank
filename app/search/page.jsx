@@ -33,7 +33,7 @@ export default function SearchPage() {
                           className="breadcrumb-item active"
                           aria-current="page"
                         >
-                          Search Result
+                          Search Result of {query}
                         </li>
                       </ol>
                     </nav>

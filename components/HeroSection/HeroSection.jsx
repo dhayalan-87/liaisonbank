@@ -16,9 +16,9 @@ export default function HeroSection() {
     const openPopup = () => setIsActive(true);
     const closePopup = () => setIsActive(false);
 
-    // const router = useRouter();
+    const router = useRouter();
     const [query, setQuery] = useState("");
-    // // const [activeIndex, setActiveIndex] = useState(-1);
+    const [activeIndex, setActiveIndex] = useState(-1);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,18 +29,18 @@ export default function HeroSection() {
         router.push(`/search?q=${encodeURIComponent(query)}`);
     };
 
-    //   // ✅ Filter suggestions
-    // const filteredSuggestions = query
-    // ? suggestions.filter((item) =>
-    //     item.toLowerCase().includes(query.toLowerCase())
-    //   )
-    // : suggestions; // show all when empty
+      // ✅ Filter suggestions
+    const filteredSuggestions = query
+    ? suggestions.filter((item) =>
+        item.toLowerCase().includes(query.toLowerCase())
+      )
+    : suggestions; // show all when empty
 
-    // const handleSuggestionClick = (text) => {
-    //     setQuery(text);
-    //     router.push(`/search?q=${encodeURIComponent(text)}`);
-    //     closePopup();
-    // };
+    const handleSuggestionClick = (text) => {
+        setQuery(text);
+        router.push(`/search?q=${encodeURIComponent(text)}`);
+        closePopup();
+    };
    
     // // ✅ Keyboard navigation
     const handleKeyDown = (e) => {
@@ -187,7 +187,7 @@ export default function HeroSection() {
                 </form>
 
                {/* ✅ Suggestions */}
-                {/* <div className="suggestions-box">
+                <div className="suggestions-box">
                 {filteredSuggestions.map((item, index) => (
                     <button
                     key={index}
@@ -200,7 +200,7 @@ export default function HeroSection() {
                     {item}
                     </button>
                 ))}
-                </div> */}
+                </div>
             </div>
         </section>
     );

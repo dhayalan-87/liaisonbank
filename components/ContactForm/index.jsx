@@ -1,105 +1,184 @@
 "use client";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+
+const initialState = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState(initialState);
+  const [errors, setErrors] = useState({});
 
+  // ✅ Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
+
+    // Remove error while typing
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  // ✅ Email validator
+  const isValidEmail = (email) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  // ✅ Validate form
+  const validate = () => {
+    const newErrors = {};
+    const errorList = [];
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+      errorList.push("Name is required");
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+      errorList.push("Email is required");
+    } else if (!isValidEmail(formData.email)) {
+      newErrors.email = "Invalid email format";
+      errorList.push("Invalid email format");
+    }
+
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+      errorList.push("Subject is required");
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+      errorList.push("Message is required");
+    }
+
+    return { newErrors, errorList };
+  };
+
+  // ✅ Handle submit
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Form Data:", formData);
+    const { newErrors, errorList } = validate();
 
-    // TODO: API call here
+    // ❌ If validation fails
+    if (errorList.length > 0) {
+      setErrors(newErrors);
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+      await Swal.fire({
+        icon: "error",
+        title: "Validation Errors",
+        html: `
+          <ul style="text-align:left;padding-left:20px;">
+            ${errorList.map((err) => `<li>${err}</li>`).join("")}
+          </ul>
+        `,
+        confirmButtonColor: "#d33",
+      });
+
+      return;
+    }
+
+    try {
+      // ✅ Simulate API call (replace with real API)
+      console.log("Form Data:", formData);
+
+      await Swal.fire({
+        icon: "success",
+        title: "Successfully Sent!",
+        text: "Your message has been submitted.",
+        confirmButtonColor: "#3085d6",
+      });
+
+      // Reset form
+      setFormData(initialState);
+      setErrors({});
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Something went wrong",
+        text: "Please try again later.",
+      });
+    }
   };
 
   return (
     <form id="contact" onSubmit={handleSubmit} noValidate>
+
+      {/* NAME */}
       <div className="form-group">
-        <label htmlFor="name" className="d-none">Your name</label>
         <input
           type="text"
           name="name"
-          id="name"
-          required
           placeholder="Your name"
-          title="Your name"
           value={formData.name}
           onChange={handleChange}
+          className={errors.name ? "error" : ""}
         />
-        <span>Your name</span>
+        <span className={formData.name ? "label-up" : ""}>
+          Your name
+        </span>
       </div>
 
+      {/* EMAIL */}
       <div className="form-group">
-         <label htmlFor="email" className="d-none">Your e-mail</label>
-        <input type="text" name="email" id="email" required="" placeholder="Your e-mail" title="Your e-mail" />
-        {/* <input
+        <input
           type="email"
           name="email"
-          id="email"
-          required
           placeholder="Your e-mail"
-          title="Your e-mail"
           value={formData.email}
           onChange={handleChange}
-        /> */}
-        <span>Your e-mail</span>
+          className={errors.email ? "error" : ""}
+        />
+        <span className={formData.email ? "label-up" : ""}>
+          Your e-mail
+        </span>
       </div>
 
+      {/* SUBJECT */}
       <div className="form-group">
-        <label htmlFor="subject" className="d-none">Subject</label>
         <input
           type="text"
           name="subject"
-          id="subject"
-          required
           placeholder="Subject"
-          title="Subject"
           value={formData.subject}
           onChange={handleChange}
+          className={errors.subject ? "error" : ""}
         />
-        <span>Subject</span>
+        <span className={formData.subject ? "label-up" : ""}>
+          Subject
+        </span>
       </div>
 
+      {/* MESSAGE */}
       <div className="form-group">
-        <label htmlFor="message" className="d-none">Your message</label>
         <textarea
           name="message"
-          id="message"
-          required
           placeholder="Your message"
-          title="Your message"
           value={formData.message}
           onChange={handleChange}
-        ></textarea>
-        <span>Your message</span>
+          className={errors.message ? "error" : ""}
+        />
+        <span className={formData.message ? "label-up" : ""}>
+          Your message
+        </span>
       </div>
 
       <div className="form-group">
-        <button id="submit" type="submit" name="submit">
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </div>
+
     </form>
   );
 };

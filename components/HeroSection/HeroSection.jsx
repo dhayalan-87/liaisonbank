@@ -126,13 +126,18 @@ export default function HeroSection() {
                                 </div></a>
                             </li>
                             <li className="hero-card" data-aos="flip-up" data-aos-duration="600" data-aos-delay="600">
-                                <div className="hero-cards--img"> 🪪 </div>
+                                <div className="hero-cards--img"> 
+                                    {/* 🪪  */}
+                                    🏅
+                                </div>
                                 <div className="hero-cards--label">
                                     <span>Licensing</span>
                                 </div>
                             </li>
                             <li className="hero-card" data-aos="flip-up" data-aos-duration="600" data-aos-delay="600">
-                                <div className="hero-cards--img"> ⚖️ </div>
+                                <div className="hero-cards--img"> 
+                                    {/* ⚖️   */}
+                                    🤝</div>
                                 <div className="hero-cards--label">
                                     <span>Liaisoning</span>
                                 </div>
@@ -144,13 +149,15 @@ export default function HeroSection() {
                                 </div>
                             </li>
                             <li className="hero-card" data-aos="flip-down" data-aos-duration="600" data-aos-delay="800">
-                                <div className="hero-cards--img"> ⛽ </div>
+                                <div className="hero-cards--img ml-2"> 
+                                    {/* 🛢️  */}
+                                    <Image src="/icon/PNG.webp" width={30} height={30} alt="Office Time" /></div>
                                 <div className="hero-cards--label">
                                     <span>PNG (SITC)</span>
                                 </div>
                             </li>
                             <li className="hero-card" data-aos="flip-down" data-aos-duration="600" data-aos-delay="800">
-                                <div className="hero-cards--img"> 🔥 </div>
+                                <div className="hero-cards--img"> 🧯 </div>
                                 <div className="hero-cards--label">
                                     <span>Fire (SITC)</span>
                                 </div>

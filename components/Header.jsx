@@ -7,6 +7,8 @@ import Image from "next/image"
 import logoScrolled from "@/assets/images/logo_grey.png"
 import { navLinks } from '@/lib/data/menus';
 import pdfIcon from "@/public/pdf_icon.png";
+import { ChevronDown } from 'react-bootstrap-icons';
+
 
 export default function Header() {
   const pathname = usePathname();
@@ -57,6 +59,7 @@ export default function Header() {
                           data-aos-duration="800"
                         >
                           {link.name}
+                          
                         </Link>
                       ) : (
                         <span
@@ -66,6 +69,7 @@ export default function Header() {
                           data-aos-duration="800"
                         >
                           {link.name}
+                          {hasSubmenu &&  <ChevronDown color="black" size={16} />}
                         </span>
                       )}
 

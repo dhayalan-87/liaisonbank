@@ -117,22 +117,22 @@ export default function ContactusLiaisonbankPage() {
                       <div className="form-group">
                         <label htmlFor="name" className="d-none">Your name</label>
                         <input type="text" name="name" id="name" required="" placeholder="Your name" title="Your name" />
-                        <span>Your name</span>
+                        <span className="label-up">Your name</span>
                       </div>
                       <div className="form-group">
                         <label htmlFor="email" className="d-none">Your e-mail</label>
                         <input type="text" name="email" id="email" required="" placeholder="Your e-mail" title="Your e-mail" />
-                        <span>Your e-mail</span>
+                        <span className="label-up">Your e-mail</span>
                       </div>
                       <div className="form-group">
                         <label htmlFor="subject" className="d-none">Subject</label>
                         <input type="text" name="subject" id="subject" required="" placeholder="Subject" title="Subject" />
-                        <span>Subject</span>
+                        <span className="label-up">Subject</span>
                       </div>
                       <div className="form-group">
                         <label htmlFor="message" className="d-none">Your message</label>
                         <textarea name="message" id="message" required="" placeholder="Your message" title="Your message"></textarea>
-                        <span>Your message</span>
+                        <span className="label-up">Your message</span>
                       </div>
                       <div className="form-group">
                         <button id="submit" type="submit" name="submit">Submit</button>

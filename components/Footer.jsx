@@ -9,6 +9,7 @@ import logoScrolled from "@/assets/images/logo.png";
 import Modal from "@/components/ModalDialog/Modal";
 import NewLauncb from "@/components/NewLaunch";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import EnquiryForm from "@/components/EnquiryForm/page.jsx";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -159,7 +160,8 @@ export default function Footer() {
         <div className="row theme-bg">
           <div className="marquee-branch flex items-center bg-white justify-between">
             <div className="comingsoontitle pl-4 w-1/3">
-              <p>Our new service</p>
+              <p>Our new branch is opening soon
+</p>
               <div className="arrow arrow-right"></div>
             </div>
             <div className="location">
@@ -193,10 +195,11 @@ export default function Footer() {
         title="Enquiry Form"
         width="600px"
       >
+        <EnquiryForm />
         <form
           action="forms/propertyenquirenow"
           method="post"
-          className="email-form"
+          className="email-form d-none"
         >
           <div className="row g-3">
 

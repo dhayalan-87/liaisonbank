@@ -93,7 +93,6 @@ export default function Header() {
                                         <Link href={sub.href || "#"}>{sub.name}</Link> 
                                         <Link
                                           href={sub.pdf}
-                                          download
                                           target="_blank"
                                           rel="noopener noreferrer"
                                           className="pdf-download"

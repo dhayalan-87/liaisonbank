@@ -76,72 +76,83 @@ const ContactForm = () => {
   // Submit Form
   // ======================================================
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const { newErrors, errorList } = validate();
+  const { newErrors, errorList } = validate();
 
-    if (errorList.length > 0) {
-      setErrors(newErrors);
+  if (errorList.length > 0) {
+    setErrors(newErrors);
 
-      Swal.fire({
-        icon: "error",
-        title: "Validation Errors",
-        html: `
-          <ul style="text-align:left;padding-left:20px;">
-            ${errorList.map((err) => `<li>${err}</li>`).join("")}
-          </ul>
-        `,
-        confirmButtonColor: "#d33",
-      });
+    Swal.fire({
+      icon: "error",
+      title: "Validation Errors",
+      html: `
+        <ul style="text-align:left;padding-left:20px;">
+          ${errorList.map((err) => `<li>${err}</li>`).join("")}
+        </ul>
+      `,
+      confirmButtonColor: "#d33",
+    });
 
-      return;
-    }
+    return;
+  }
 
-    try {
-      setLoading(true);
+  try {
+    setLoading(true);
 
-      // ======================================================
-      // API CALL TO RENDER FASTAPI BACKEND
-      // ======================================================
-      const res = await fetch(
-        "https://liaisonbank-backend.onrender.com/send-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+    // ======================================================
+    // CLEAN PAYLOAD (Fix 422 Error)
+    // ======================================================
+    const payload = {
+      name: formData.name?.trim(),
+      email: formData.email?.trim(),
+      subject: formData.subject?.trim(),
+      message: formData.message?.trim(),
+    };
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.detail || "Failed to send");
+    const res = await fetch(
+      "https://liaisonbank-backend.onrender.com/send-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       }
+    );
 
-      // ======================================================
-      // Success Alert
-      // ======================================================
-      await Swal.fire({
-        icon: "success",
-        title: "Successfully Sent!",
-        text: "Your message has been submitted.",
-        confirmButtonColor: "#3085d6",
-      });
+    const data = await res.json();
 
-      setFormData(initialState);
-      setErrors({});
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Something went wrong",
-        text: error.message || "Please try again later.",
-      });
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      console.log("Backend Error:", data);
+
+      const errorMsg =
+        data?.detail?.[0]?.msg ||
+        data?.detail ||
+        "Failed to send email";
+
+      throw new Error(errorMsg);
     }
-  };
+
+    await Swal.fire({
+      icon: "success",
+      title: "Successfully Sent!",
+      text: "Your message has been submitted.",
+      confirmButtonColor: "#3085d6",
+    });
+
+    setFormData(initialState);
+    setErrors({});
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Something went wrong",
+      text: error.message || "Please try again later.",
+    });
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <form id="contact" onSubmit={handleSubmit} noValidate>

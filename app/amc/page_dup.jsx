@@ -12,7 +12,7 @@ import liaison_bank from "@/assets/images/amc/liaison_bank.png";
 
 
 export default function AMCPage() {
-  useBodyClass('amc');
+  useBodyClass('amcDup');
   return (
     <>
       <div className="page-header">

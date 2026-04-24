@@ -1,121 +1,257 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 export default function EnquiryForm() {
   const [form, setForm] = useState({
-    company: "",
-    person: "",
-    phone: "",
-    email: "",
-    message: "",
+    company_name: "",
+    contact_person: "",
+    phone_number: "",
+    email_id: "",
+    type_of_services: "",
+    enquiry_details: "",
   });
+
+  const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
+
+  const services = [
+    "Fire Safety",
+    "PNG",
+    "Electrical",
+    "Plumbing",
+    "Liaisoning",
+    "Licensing",
+    "AMC",
+    "Pest Control",
+  ];
+
+  /* ✅ Prevent page/body scroll when country dropdown opens */
+  useEffect(() => {
+    if (countryDropdownOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    };
+  }, [countryDropdownOpen]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const resetForm = () => {
+    setForm({
+      company_name: "",
+      contact_person: "",
+      phone_number: "",
+      email_id: "",
+      type_of_services: "",
+      enquiry_details: "",
+    });
+  };
+
+  const validateForm = () => {
+    const errors = [];
+
+    if (!form.company_name.trim()) errors.push("Company Name is required");
+    if (!form.contact_person.trim()) errors.push("Contact Person is required");
+    if (!form.phone_number.trim()) errors.push("Phone Number is required");
+
+    if (!form.email_id.trim()) {
+      errors.push("Email ID is required");
+    } else if (!/\S+@\S+\.\S+/.test(form.email_id)) {
+      errors.push("Enter a valid Email ID");
+    }
+
+    if (!form.type_of_services)
+      errors.push("Please select Type of Service");
+
+    return errors;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const errors = validateForm();
+
+    if (errors.length > 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Validation Error",
+        html: `
+          <ul style="text-align:left;padding-left:20px;">
+            ${errors.map((err) => `<li>${err}</li>`).join("")}
+          </ul>
+        `,
+        confirmButtonColor: "#000",
+      });
+      return;
+    }
+
     console.log(form);
+
+    Swal.fire({
+      icon: "success",
+      title: "Enquiry Submitted",
+      text: "Your enquiry has been submitted successfully.",
+      confirmButtonColor: "#000",
+    });
+
+    resetForm();
+  };
+
+  const handleDiscard = () => {
+    Swal.fire({
+      title: "Discard Changes?",
+      text: "All entered details will be removed.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#000",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Discard",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        resetForm();
+
+        Swal.fire({
+          icon: "success",
+          title: "Discarded",
+          text: "Form has been cleared.",
+          confirmButtonColor: "#000",
+        });
+      }
+    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-        {/* Grid Fields */}
-        <div className="grid md:grid-cols-2 gap-6">
+      {/* Grid Fields */}
+      <div className="grid md:grid-cols-2 gap-2">
         {/* Company Name */}
         <div>
-            <label className="block mb-2 text-lg font-medium">
+          <label className="block mb-2">
             Company Name <span className="text-red-500">*</span>
-            </label>
-            <input
+          </label>
+          <input
             type="text"
-            name="company"
-            value={form.company}
+            name="company_name"
+            value={form.company_name}
             onChange={handleChange}
-            className="w-full h-12 px-4 rounded-xl bg-gray-100 outline-none focus:ring-2 focus:ring-black"
-            />
+            className="w-full form-control px-2 py-1 rounded-xl bg-gray-100 outline-none focus:ring-2 focus:ring-black"
+          />
         </div>
 
         {/* Contact Person */}
         <div>
-            <label className="block mb-2 text-lg font-medium">
+          <label className="block mb-2">
             Contact Person <span className="text-red-500">*</span>
-            </label>
-            <input
+          </label>
+          <input
             type="text"
-            name="person"
-            value={form.person}
+            name="contact_person"
+            value={form.contact_person}
             onChange={handleChange}
-            className="w-full py-2 px-4 rounded-xl bg-gray-100 outline-none focus:ring-1 focus:ring-black"
-            />
+            className="w-full form-control px-2 py-1 rounded-xl bg-gray-100 outline-none focus:ring-2 focus:ring-black"
+          />
         </div>
 
         {/* Phone Number */}
         <div>
-            <label className="block mb-2 text-lg font-medium">
+          <label className="block mb-2">
             Phone Number <span className="text-red-500">*</span>
-            </label>
+          </label>
 
-            <PhoneInput
+          <PhoneInput
             country={"in"}
-            value={form.phone}
-            onChange={(phone) => setForm({ ...form, phone })}
-            searchPlaceholder="Search for countries..."
+            value={form.phone_number}
+            onChange={(phone) =>
+              setForm({ ...form, phone_number: phone })
+            }
             enableSearch={true}
-            inputClass="!w-full py-3 !pl-14 py-3 !rounded-xl !bg-gray-100 !border-none"
-            buttonClass="!border-none !bg-gray-100 !rounded-l-xl"
+            searchPlaceholder="Search country..."
+            onFocus={() => setCountryDropdownOpen(true)}
+            onBlur={() => setCountryDropdownOpen(false)}
+            inputClass="!w-full !pl-14"
+            buttonClass="!rounded-l"
             containerClass="!w-full"
-            dropdownClass="!rounded-xl !shadow-lg"
-            />
+            dropdownClass="!rounded !shadow-lg"
+          />
         </div>
 
         {/* Email */}
         <div>
-            <label className="block mb-2 text-lg font-medium">
+          <label className="block mb-2">
             Email ID <span className="text-red-500">*</span>
-            </label>
-            <input
+          </label>
+          <input
             type="email"
-            name="email"
-            value={form.email}
+            name="email_id"
+            value={form.email_id}
             onChange={handleChange}
-            className="w-full py-2 px-4 rounded-xl bg-gray-100 outline-none focus:ring-1 focus:ring-black"
-            />
-        </div>
+            className="w-full form-control px-2 py-1 rounded-xl bg-gray-100 outline-none focus:ring-2 focus:ring-black"
+          />
         </div>
 
-        {/* Message */}
-        <div className="mt-6">
+        {/* Type of Service */}
+        <div className="md:col-span-2">
+          <label className="block mb-2">
+            Type of Services <span className="text-red-500">*</span>
+          </label>
+
+          <select
+            name="type_of_services"
+            value={form.type_of_services}
+            onChange={handleChange}
+            className="w-full form-control px-2 py-1 rounded-xl bg-gray-100 outline-none focus:ring-2 focus:ring-black"
+          >
+            <option value="">Select Service</option>
+            {services.map((item, index) => (
+              <option key={index} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Message */}
+      <div className="mt-6">
         <textarea
-            rows="6"
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="Message..."
-            className="w-full p-4 rounded-xl bg-gray-100 outline-none resize-none focus:ring-2 focus:ring-black"
+          rows="3"
+          name="enquiry_details"
+          value={form.enquiry_details}
+          onChange={handleChange}
+          placeholder="Message..."
+          className="w-full form-control px-2 py-1 rounded-xl bg-gray-100 outline-none resize-none focus:ring-2 focus:ring-black"
         />
-        </div>
+      </div>
 
-        {/* Buttons */}
-        <div className="flex justify-end gap-4 mt-8">
+      {/* Buttons */}
+      <div className="flex justify-end gap-4 mt-8">
         <button
-            type="button"
-            className="px-6 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition"
+          type="button"
+          onClick={handleDiscard}
+          className="px-6 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition"
         >
-            Discard
+          Reset
         </button>
 
         <button
-            type="submit"
-            className="px-10 py-3 rounded-xl bg-black text-white hover:bg-gray-800 transition"
+          type="submit"
+          className="px-10 py-3 rounded-xl bg-black text-white hover:bg-gray-800 transition"
         >
-            Save
+          Save
         </button>
-        </div>
+      </div>
     </form>
   );
 }

@@ -103,7 +103,7 @@ export default function AboutUsLiaisonPage() {
             </div>
           </div>
 
-          <div className="row justify-content-center align-items-center">
+          <div className="row justify-content-center align-items-center second">
             <div className="col-lg-6 col-sm-12 licensing-doc mx-auto">
               <Image
                 src={licenseService}
@@ -118,6 +118,7 @@ export default function AboutUsLiaisonPage() {
             </div>
             <div className="col-lg-6 col-sm-12">
               <div className="our-story-text" data-aos="fade-left" data-aos-duration="600" data-aos-delay="300">
+                
                 <h3>Our Story</h3>  
                 <p >
                 Founded in 2017 as DBRE India and officially established as Liaison Bank in 2019, our journey began with a clear vision - to simplify business licensing services, regulatory approvals, and compliance management in India. Headquartered in Mumbai, Liaison Bank office is strategically located at Plot 466, New Apollo CHSL, 14th Road, Khar West, beside Blue Tokai Cafe, enabling us to stay closely connected with key regulatory authorities and business hubs.
@@ -132,7 +133,7 @@ export default function AboutUsLiaisonPage() {
               
             </div>           
           </div>
-          <div className="row justify-content-center align-items-center py-4">
+          <div className="row justify-content-center align-items-center py-4 third">
             <div className="col-lg-6 col-sm-12"  data-aos="fade-right" data-aos-duration="600" data-aos-delay="300">
               <div className="our-commitment-text" >
                 <h3>Our Commitment</h3>  

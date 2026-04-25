@@ -132,8 +132,12 @@ export default function EnquiryForm() {
           text: "Your enquiry has been submitted successfully.",
           confirmButtonColor: "#000",
         });
-
+        /* Close popup after success */
+        if (onClose) {
+          onClose();
+        }
         resetForm();
+        
       } else {
         Swal.fire({
           icon: "error",

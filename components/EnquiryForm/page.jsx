@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
-export default function EnquiryForm({ onClose }) {
+export default function EnquiryForm() {
   const [form, setForm] = useState({
     company_name: "",
     contact_person: "",
@@ -110,10 +110,10 @@ export default function EnquiryForm({ onClose }) {
 
       const payload = {
         ...form,
-        phone_number: `+91 ${localNumber}`,
+        phone_number: `+91-${localNumber}`,
       };
 
-      console.log("Sending Payload:", payload);
+      // console.log("Sending Payload:", payload);
       // return;
       const response = await fetch("/api/enquiry", {
         method: "POST",
@@ -132,12 +132,8 @@ export default function EnquiryForm({ onClose }) {
           text: "Your enquiry has been submitted successfully.",
           confirmButtonColor: "#000",
         });
-        /* Close popup after success */
-        if (onClose) {
-          onClose();
-        }
+
         resetForm();
-        
       } else {
         Swal.fire({
           icon: "error",

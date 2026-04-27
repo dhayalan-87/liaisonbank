@@ -131,9 +131,10 @@ export default function EnquiryForm() {
           title: "Enquiry Submitted",
           text: "Your enquiry has been submitted successfully.",
           confirmButtonColor: "#000",
+        }).then(() => {
+          window.location.reload();
         });
-
-        resetForm();
+        // resetForm();
       } else {
         Swal.fire({
           icon: "error",
@@ -172,6 +173,8 @@ export default function EnquiryForm() {
           title: "Reset",
           text: "Form has been cleared.",
           confirmButtonColor: "#000",
+        }).then(() => {
+          window.location.reload();
         });
       }
     });
